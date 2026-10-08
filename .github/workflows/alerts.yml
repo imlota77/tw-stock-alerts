@@ -28,6 +28,7 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
           DISCORD_WEBHOOK_2330: ${{ secrets.DISCORD_WEBHOOK_2330 }}
+          DISCORD_WEBHOOK_PASSIVE: ${{ secrets.DISCORD_WEBHOOK_PASSIVE }}
         run: python tw_alerts.py
 
       - name: Commit updated state

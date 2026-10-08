@@ -15,5 +15,40 @@
     "code": "2330",
     "name": "台積電",
     "webhook_env": "DISCORD_WEBHOOK_2330"
+  },
+  {
+    "code": "3026",
+    "name": "禾伸堂",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "2327",
+    "name": "國巨*",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "6173",
+    "name": "信昌電",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "2492",
+    "name": "華新科",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "2478",
+    "name": "大毅",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "6834",
+    "name": "天二科技",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "3624",
+    "name": "光頡",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
   }
 ]
