@@ -64,6 +64,33 @@ def fetch_ezmoney(e, on=None):
     return dt, hold
 
 
+def _trandate(v):
+    v = str(v)
+    m = re.match(r"/Date\((\d+)\)/", v)
+    if m:
+        return datetime.fromtimestamp(int(m.group(1)) / 1000, timezone.utc).astimezone(TZ).date().isoformat()
+    return v[:10]
+
+
+def fetch_ezmoney_pcf(e, post):
+    """申購買回清單：post 為清單日期（民國年/月/日）。清單內的 TranDate 才是持股的收盤日。"""
+    cj = http.cookiejar.CookieJar()
+    op = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
+    get("https://www.ezmoney.com.tw/ETF/Transaction/PCF", opener=op)
+    body = json.dumps({"fundCode": e["id"], "date": post, "specificDate": True}).encode()
+    j = json.loads(get("https://www.ezmoney.com.tw/ETF/Transaction/GetPCF", data=body, opener=op,
+                       headers={"Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest"}))
+    hold, dt = {}, None
+    for a in j.get("asset") or []:
+        if a.get("AssetCode") != "ST":
+            continue
+        for o in a.get("Details") or []:
+            if o.get("DetailCode"):
+                hold[o["DetailCode"].strip()] = (o.get("DetailName", "").strip(), num(o["Share"]))
+                dt = dt or _trandate(o.get("TranDate"))
+    return dt, hold
+
+
 def fetch_fhtrust(e, on=None):
     start = on or datetime.now(TZ).date()
     for i in range(0, 6 if on is None else 1):
@@ -159,10 +186,19 @@ def send(embed):
 
 
 def prev_snapshot(e, dt):
-    """第一次執行時，復華 / 群益可以直接查前一個營業日，立刻產生比較。"""
-    if e["src"] not in ("fhtrust", "capital"):
-        return None
+    """第一次執行時，直接查前一個持股日，立刻產生比較。"""
     d = date.fromisoformat(dt)
+    if e["src"] == "ezmoney":
+        today = datetime.now(TZ).date()
+        for i in range(0, 8):
+            x = today - timedelta(days=i)
+            try:
+                pdt, ph = fetch_ezmoney_pcf(e, f"{x.year - 1911}/{x.month:02d}/{x.day:02d}")
+            except Exception:
+                continue
+            if ph and pdt and pdt < dt:
+                return pdt, ph
+        return None
     for i in range(1, 6):
         try:
             pdt, ph = FETCH[e["src"]](e, d - timedelta(days=i))
