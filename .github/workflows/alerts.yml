@@ -1,0 +1,45 @@
+name: TW Stock Alerts
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # UTC。台灣時間 = UTC+8。每天 08:35 與 16:00~22:00 每 30 分鐘一次
+    - cron: '35 0 * * *'
+    - cron: '0,30 8-13 * * *'
+    - cron: '0 14 * * *'
+
+concurrency:
+  group: tw-stock-alerts
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run alerts
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python tw_alerts.py
+
+      - name: Commit updated state
+        run: |
+          git config user.name "tw-stock-alerts"
+          git config user.email "actions@users.noreply.github.com"
+          git add state.json
+          if git diff --cached --quiet; then
+            echo "no state change"
+          else
+            git commit -m "state update"
+            for i in 1 2 3; do
+              git pull --rebase -q origin main && git push -q origin main && break
+              sleep 3
+            done
+          fi
