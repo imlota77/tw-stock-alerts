@@ -15,7 +15,6 @@
     "code": "2330",
     "name": "台積電",
     "webhook_envs": [
-      "DISCORD_WEBHOOK_2330",
       "DISCORD_WEBHOOK_FOUNDRY"
     ]
   },
