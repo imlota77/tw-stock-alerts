@@ -1,0 +1,43 @@
+name: Market Report
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # UTC。台灣時間 = UTC+8。每天 22:00；休市日資料日期沒變，程式會自動略過
+    - cron: '0 14 * * *'
+
+concurrency:
+  group: market-report
+  cancel-in-progress: false
+
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run market report
+        env:
+          DISCORD_WEBHOOK_MARKET: ${{ secrets.DISCORD_WEBHOOK_MARKET }}
+        run: python market_report.py
+
+      - name: Commit updated state
+        run: |
+          git config user.name "tw-stock-alerts"
+          git config user.email "actions@users.noreply.github.com"
+          git add market_state.json
+          if git diff --cached --quiet; then
+            echo "no state change"
+          else
+            git commit -m "market state update"
+            for i in 1 2 3; do
+              git pull --rebase -q origin main && git push -q origin main && break
+              sleep 3
+            done
+          fi
