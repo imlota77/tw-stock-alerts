@@ -5,6 +5,7 @@ from datetime import datetime, date, timedelta, timezone
 
 TZ = timezone(timedelta(hours=8))  # 台灣無夏令時間
 HOOK = os.environ.get("DISCORD_WEBHOOK_URL", "")
+CUR_HOOK = ""  # 目前處理中的股票專屬 webhook(沒有就用預設)
 DRY = "--dry" in sys.argv
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "state.json")
@@ -48,10 +49,11 @@ def mops(path, body):
 
 # ---------- discord ----------
 def send(embed):
-    if DRY or not HOOK:
+    hook = CUR_HOOK or HOOK
+    if DRY or not hook:
         print("[DRY]", json.dumps(embed, ensure_ascii=False, indent=1))
         return True
-    s, b = http(HOOK, data=json.dumps({"embeds": [embed]}).encode(),
+    s, b = http(hook, data=json.dumps({"embeds": [embed]}).encode(),
                 headers={"Content-Type": "application/json"}, method="POST")
     time.sleep(1.2)
     if s not in (200, 204):
@@ -236,7 +238,10 @@ def classify(title):
 
 def parse_title_period(title):
     t = re.sub(r"\s+", "", title)
-    m = re.search(r"(\d{2,3})年(上半年度|前三季|度|第([一二三四1-4])季)", t)
+    m0 = re.search(r"(\d{2,3})年度?第([一二三四1-4])季", t)
+    if m0:
+        return int(m0.group(1)), QNUM.get(m0.group(2)) or int(m0.group(2))
+    m = re.search(r"(\d{2,3})年(上半年度|前三季|度)", t)
     if not m:
         return None
     w = m.group(2)
@@ -244,10 +249,8 @@ def parse_title_period(title):
         q = 2
     elif w == "前三季":
         q = 3
-    elif w == "度":
-        q = 4
     else:
-        q = QNUM.get(m.group(3)) or int(m.group(3))
+        q = 4
     return int(m.group(1)), q
 
 
@@ -445,8 +448,13 @@ def main():
     today = datetime.now(TZ).date()
     if "--date" in sys.argv:
         today = date.fromisoformat(sys.argv[sys.argv.index("--date") + 1])
+    global CUR_HOOK
     for stock in wl:
         code = stock["code"]
+        CUR_HOOK = os.environ.get(stock.get("webhook_env", ""), "") if stock.get("webhook_env") else ""
+        if stock.get("webhook_env") and not CUR_HOOK and not DRY:
+            print("MISSING webhook env", stock["webhook_env"], file=sys.stderr)
+            continue
         st = state.setdefault(code, {})
         first = not st.get("init")
         for k, v in (("seen", []), ("rev", []), ("reports", []), ("warned", []), ("meetings", []), ("reminders", [])):
