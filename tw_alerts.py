@@ -5,7 +5,7 @@ from datetime import datetime, date, timedelta, timezone
 
 TZ = timezone(timedelta(hours=8))  # 台灣無夏令時間
 HOOK = os.environ.get("DISCORD_WEBHOOK_URL", "")
-CUR_HOOK = ""  # 目前處理中的股票專屬 webhook(沒有就用預設)
+CUR_HOOK = []  # 目前處理中的股票專屬 webhook 清單(沒有就用預設)
 DRY = "--dry" in sys.argv
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "state.json")
@@ -49,17 +49,20 @@ def mops(path, body):
 
 # ---------- discord ----------
 def send(embed):
-    hook = CUR_HOOK or HOOK
-    if DRY or not hook:
+    hooks = CUR_HOOK or ([HOOK] if HOOK else [])
+    if DRY or not hooks:
         print("[DRY]", json.dumps(embed, ensure_ascii=False, indent=1))
         return True
-    s, b = http(hook, data=json.dumps({"embeds": [embed]}).encode(),
-                headers={"Content-Type": "application/json"}, method="POST")
-    time.sleep(1.2)
-    if s not in (200, 204):
-        print("DISCORD FAIL", s, b[:200], file=sys.stderr)
-        return False
-    return True
+    ok = False
+    for hook in hooks:
+        s, b = http(hook, data=json.dumps({"embeds": [embed]}).encode(),
+                    headers={"Content-Type": "application/json"}, method="POST")
+        time.sleep(1.2)
+        if s not in (200, 204):
+            print("DISCORD FAIL", s, b[:200], file=sys.stderr)
+        else:
+            ok = True
+    return ok
 
 
 def mk(code, name, kind, color, desc, fields=None, url=None):
@@ -495,9 +498,10 @@ def main():
     global CUR_HOOK
     for stock in wl:
         code = stock["code"]
-        CUR_HOOK = os.environ.get(stock.get("webhook_env", ""), "") if stock.get("webhook_env") else ""
-        if stock.get("webhook_env") and not CUR_HOOK and not DRY:
-            print("MISSING webhook env", stock["webhook_env"], file=sys.stderr)
+        envs = stock.get("webhook_envs") or ([stock["webhook_env"]] if stock.get("webhook_env") else [])
+        CUR_HOOK = [os.environ[e] for e in envs if os.environ.get(e)]
+        if envs and not CUR_HOOK and not DRY:
+            print("MISSING webhook env", envs, file=sys.stderr)
             continue
         st = state.setdefault(code, {})
         first = not st.get("init")

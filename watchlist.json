@@ -14,7 +14,10 @@
   {
     "code": "2330",
     "name": "台積電",
-    "webhook_env": "DISCORD_WEBHOOK_2330"
+    "webhook_envs": [
+      "DISCORD_WEBHOOK_2330",
+      "DISCORD_WEBHOOK_FOUNDRY"
+    ]
   },
   {
     "code": "3026",
@@ -75,5 +78,26 @@
     "code": "2467",
     "name": "志聖",
     "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+  },
+  {
+    "code": "2303",
+    "name": "聯電",
+    "webhook_envs": [
+      "DISCORD_WEBHOOK_FOUNDRY"
+    ]
+  },
+  {
+    "code": "6770",
+    "name": "力積電",
+    "webhook_envs": [
+      "DISCORD_WEBHOOK_FOUNDRY"
+    ]
+  },
+  {
+    "code": "5347",
+    "name": "世界先進",
+    "webhook_envs": [
+      "DISCORD_WEBHOOK_FOUNDRY"
+    ]
   }
 ]
