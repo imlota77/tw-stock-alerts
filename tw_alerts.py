@@ -340,8 +340,10 @@ def handle_item(stock, st, kind, item, first, today, today_roc):
         per = re.search(r"年季[:：]\s*(\S+)", txt)
         desc = (prefix + f"**董事會預計召開日：{d.isoformat() if d else '見公告'}**（通常當天收盤後公布財報）\n"
                 f"• 提報財報：{per.group(1) if per else item[4].strip()}\n\n{pub}")
+        pk = parse_title_period(per.group(1)) if per else None
         if d and d >= today:
-            st["reminders"].append({"date": d.isoformat(), "kind": "board", "text": per.group(1) if per else "財報", "done": []})
+            st["reminders"].append({"date": d.isoformat(), "kind": "board", "text": per.group(1) if per else "財報",
+                                    "period": f"{pk[0]}Q{pk[1]}" if pk else "", "done": []})
         if first and d and (today - d).days > 60:
             return
         send(mk(code, name, "財報日期預告", "board", desc))
@@ -354,9 +356,12 @@ def handle_item(stock, st, kind, item, first, today, today_roc):
         desc = (prefix + f"**{label}：{d.isoformat() if d else '見公告'}　{g('召開法人說明會之時間') or g('時間') or ''}**\n"
                 f"• 地點：{g('召開法人說明會之地點') or g('地點') or '見公告'}\n"
                 f"• 主題：{g('法人說明會擇要訊息') or g('擇要訊息') or item[4].strip()}\n\n{pub}")
+        tm = re.search(r"(\d{1,2})\s*時\s*(\d{1,2})?", g("召開法人說明會之時間") or g("時間") or "")
+        tstr = f"{int(tm.group(1)):02d}:{int(tm.group(2) or 0):02d}" if tm else ""
         if d and d >= today:
-            st["meetings"].append({"date": d.isoformat(), "mat": False})
-            st["reminders"].append({"date": d.isoformat(), "kind": "meeting", "text": "法說會" if kind == "meeting" else "投資活動", "done": []})
+            st["meetings"].append({"date": d.isoformat(), "mat": False, "late": False, "text": "法說會" if kind == "meeting" else "投資活動"})
+            st["reminders"].append({"date": d.isoformat(), "kind": "meeting", "text": "法說會" if kind == "meeting" else "投資活動",
+                                    "time": tstr, "done": []})
         if first and d and (today - d).days > 200:
             return
         send(mk(code, name, "受邀參加投資活動" if kind == "invite" else "法說會公告", "meeting", desc))
@@ -389,17 +394,44 @@ def check_events(stock, st, today, first):
 
 def check_reminders(stock, st, today):
     code, name = stock["code"], stock["name"]
+    now = datetime.now(TZ)
     for r in st["reminders"]:
         d = date.fromisoformat(r["date"])
         diff = (d - today).days
-        offs = (1, 0) if r["kind"] == "meeting" else (0,)
-        if diff in offs and diff not in r["done"]:
-            r["done"].append(diff)
-            when = "明天" if diff == 1 else "今天"
-            if r["kind"] == "meeting":
-                send(mk(code, name, f"{when}{r['text']}", "meeting", f"**{when}（{d.isoformat()}）有{r['text']}**，簡報通常會在會後上傳公開資訊觀測站。"))
-            else:
-                send(mk(code, name, "今天財報", "board", f"**今天（{d.isoformat()}）預計公布 {r['text']}**，通常在收盤後。"))
+        done = r["done"]
+
+        def once(tag):
+            if tag in done:
+                return False
+            done.append(tag)
+            return True
+
+        if r["kind"] == "meeting":
+            tm = r.get("time") or ""
+            tline = f" {tm}" if tm else ""
+            if diff == 3 and once("d3"):
+                send(mk(code, name, f"3天後{r['text']}", "meeting", f"**{d.isoformat()}{tline} 有{r['text']}**（還有 3 天）。簡報與錄音會在會後上傳。"))
+            if diff == 1 and once("d1"):
+                send(mk(code, name, f"明天{r['text']}", "meeting", f"**明天（{d.isoformat()}）{tline} 有{r['text']}**，簡報與錄音會在會後上傳。"))
+            if diff == 0:
+                if once("d0"):
+                    send(mk(code, name, f"今天{r['text']}", "meeting", f"**今天（{d.isoformat()}）{tline} 有{r['text']}**，簡報與錄音會在會後上傳。"))
+                if tm and "soon" not in done:
+                    mh, mm = int(tm[:2]), int(tm[3:])
+                    start = now.replace(hour=mh, minute=mm, second=0, microsecond=0)
+                    if now < start and now.hour >= max(8, min(mh - 1, 13)) and once("soon"):
+                        send(mk(code, name, f"{r['text']}即將開始", "meeting", f"**{tm} 開始{r['text']}**，請準備。"))
+        else:
+            label = r["text"]
+            if diff == 3 and once("d3"):
+                send(mk(code, name, "財報3天後公布", "board", f"**{d.isoformat()} 董事會預計通過 {label}**（還有 3 天），通常收盤後公布。"))
+            if diff == 1 and once("d1"):
+                send(mk(code, name, "財報明天公布", "board", f"**明天（{d.isoformat()}）董事會預計通過 {label}**，通常收盤後公布。"))
+            if diff == 0:
+                if once("d0"):
+                    send(mk(code, name, "財報今天公布", "board", f"**今天（{d.isoformat()}）董事會預計通過 {label}**，通常收盤後公布，公布後會立刻通知。"))
+                if now.hour >= 16 and r.get("period") not in st["reports"] and once("pm"):
+                    send(mk(code, name, "財報今晚留意", "board", f"**今天預計公布 {label}**，目前還沒查到，持續追蹤中。"))
     st["reminders"] = [r for r in st["reminders"] if (today - date.fromisoformat(r["date"])).days <= 3]
 
 
@@ -409,6 +441,10 @@ def check_materials(stock, st, today):
         d = date.fromisoformat(m["date"])
         if m["mat"] or d > today or (today - d).days > 14:
             continue
+        if (today - d).days >= 1 and not m.get("late"):
+            m["late"] = True
+            send(mk(code, name, f"{m.get('text', '法說會')}簡報尚未上傳", "warn",
+                    f"**{d.isoformat()} 的{m.get('text', '法說會')}已結束，簡報/錄音還沒上傳到公開資訊觀測站**，持續追蹤，上傳後會立刻通知。"))
         links = []
         for lang, label in (("M", "中文"), ("E", "英文")):
             found = None
@@ -436,10 +472,18 @@ def deadline_warn(stock, st, today):
              (date(y, 11, 14), y - 1911, 3), (date(y, 3, 31), y - 1912, 4)]
     for dl, fy, q in cands:
         key = f"{fy}Q{q}"
-        if dl - timedelta(days=3) <= today <= dl and key not in st["reports"] and ("dl" + key) not in st["warned"]:
-            st["warned"].append("dl" + key)
-            send(mk(code, name, "財報期限將到", "warn",
-                    f"{fy + 1911} 年{'年度' if q == 4 else '第' + str(q) + '季'}財報法定期限為 **{dl.isoformat()}**，目前尚未查到公布。"))
+        days = (dl - today).days
+        if days < 0 or days > 7 or key in st["reports"]:
+            continue
+        thr = min(x for x in (7, 3, 1, 0) if days <= x)
+        tag = f"dl{key}_{thr}"
+        if tag in st["warned"]:
+            continue
+        for x in (7, 3, 1, 0):
+            if x >= thr:
+                st["warned"].append(f"dl{key}_{x}")
+        send(mk(code, name, "財報期限將到", "warn",
+                f"{fy + 1911} 年{'年度' if q == 4 else '第' + str(q) + '季'}財報法定期限為 **{dl.isoformat()}**（還有 {days} 天），目前尚未查到公布，公布後會立刻通知。"))
 
 
 def main():

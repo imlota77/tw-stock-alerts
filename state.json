@@ -191,7 +191,8 @@
     "date": "2026-10-15",
     "kind": "meeting",
     "text": "法說會",
-    "done": []
+    "done": [],
+    "time": "14:00"
    }
   ],
   "init": true
