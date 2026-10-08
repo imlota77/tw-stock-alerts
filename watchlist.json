@@ -50,5 +50,30 @@
     "code": "3624",
     "name": "光頡",
     "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "3498",
+    "name": "陽程",
+    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+  },
+  {
+    "code": "6187",
+    "name": "萬潤",
+    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+  },
+  {
+    "code": "3131",
+    "name": "弘塑",
+    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+  },
+  {
+    "code": "3583",
+    "name": "辛耘",
+    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+  },
+  {
+    "code": "2467",
+    "name": "志聖",
+    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
   }
 ]
