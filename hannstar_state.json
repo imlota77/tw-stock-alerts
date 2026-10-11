@@ -15,6 +15,7 @@
   "2016/12/27|2016年第三季法人說明會"
  ],
  "fail_count": 0,
- "last_status": "seeded",
- "warned_fail": false
+ "last_status": "ok 13 場",
+ "warned_fail": false,
+ "last_ok_date": "2026-10-12"
 }
