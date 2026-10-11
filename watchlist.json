@@ -147,30 +147,36 @@
   {
     "code": "2615",
     "name": "萬海",
-    "webhook_envs": [
-      "DISCORD_WEBHOOK_SHIPPING",
-      "DISCORD_WEBHOOK_TRANSPORT"
-    ]
+    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
   },
   {
     "code": "2609",
     "name": "陽明",
-    "webhook_envs": [
-      "DISCORD_WEBHOOK_SHIPPING",
-      "DISCORD_WEBHOOK_TRANSPORT"
-    ]
+    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
   },
   {
     "code": "2603",
     "name": "長榮",
-    "webhook_envs": [
-      "DISCORD_WEBHOOK_SHIPPING",
-      "DISCORD_WEBHOOK_TRANSPORT"
-    ]
+    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
   },
   {
     "code": "6757",
     "name": "台灣虎航",
+    "webhook_env": "DISCORD_WEBHOOK_TRANSPORT"
+  },
+  {
+    "code": "2646",
+    "name": "星宇航空",
+    "webhook_env": "DISCORD_WEBHOOK_TRANSPORT"
+  },
+  {
+    "code": "2618",
+    "name": "長榮航",
+    "webhook_env": "DISCORD_WEBHOOK_TRANSPORT"
+  },
+  {
+    "code": "2610",
+    "name": "華航",
     "webhook_env": "DISCORD_WEBHOOK_TRANSPORT"
   }
 ]
