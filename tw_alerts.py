@@ -232,6 +232,11 @@ def classify(title):
         return "board"
     if fin and ("相關資訊" in t or "決議通過" in t or "經董事會" in t or "業經董事會" in t):
         return "report"
+    if fin and "決議日期" in t and "董事會" in t:
+        return "board"
+    # 其他寫法：「董事會通過…財務報告」「業經提報董事會通過」「公告本公司115年第2季合併財務報告」「2026年第二季財務報告」
+    if fin and parse_title_period(t) and not any(x in t for x in REPORT_EXCL):
+        return "report"
     if "受邀參加" in t:
         return "invite"
     if "法人說明會" in t:
@@ -239,8 +244,15 @@ def classify(title):
     return None
 
 
+REPORT_EXCL = ("召開日期", "預計召開", "決議日期", "更正", "重編", "補充", "差異", "海外財務報告", "受邀",
+               "法人說明會", "股利", "盈餘分", "代子公司", "代母公司", "之說明")
+
+
 def parse_title_period(title):
     t = re.sub(r"\s+", "", title)
+    m4 = re.search(r"(20\d{2})年度?第([一二三四1-4])季", t)  # 西元年（如聯電「2026年第二季」）
+    if m4:
+        return int(m4.group(1)) - 1911, QNUM.get(m4.group(2)) or int(m4.group(2))
     m0 = re.search(r"(\d{2,3})年度?第([一二三四1-4])季", t)
     if m0:
         return int(m0.group(1)), QNUM.get(m0.group(2)) or int(m0.group(2))
