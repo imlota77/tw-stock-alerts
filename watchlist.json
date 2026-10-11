@@ -98,5 +98,25 @@
     "webhook_envs": [
       "DISCORD_WEBHOOK_FOUNDRY"
     ]
+  },
+  {
+    "code": "3673",
+    "name": "TPK-KY(宸鴻)",
+    "webhook_env": "DISCORD_WEBHOOK_PANEL"
+  },
+  {
+    "code": "2409",
+    "name": "友達",
+    "webhook_env": "DISCORD_WEBHOOK_PANEL"
+  },
+  {
+    "code": "3481",
+    "name": "群創",
+    "webhook_env": "DISCORD_WEBHOOK_PANEL"
+  },
+  {
+    "code": "6116",
+    "name": "彩晶",
+    "webhook_env": "DISCORD_WEBHOOK_PANEL"
   }
 ]
