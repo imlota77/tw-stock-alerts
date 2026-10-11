@@ -143,5 +143,20 @@
     "code": "2885",
     "name": "元大金",
     "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2615",
+    "name": "萬海",
+    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
+  },
+  {
+    "code": "2609",
+    "name": "陽明",
+    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
+  },
+  {
+    "code": "2603",
+    "name": "長榮",
+    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
   }
 ]
