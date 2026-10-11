@@ -118,5 +118,30 @@
     "code": "6116",
     "name": "彩晶",
     "webhook_env": "DISCORD_WEBHOOK_PANEL"
+  },
+  {
+    "code": "2883",
+    "name": "凱基金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2882",
+    "name": "國泰金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2881",
+    "name": "富邦金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2890",
+    "name": "永豐金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2885",
+    "name": "元大金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
   }
 ]

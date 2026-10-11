@@ -32,6 +32,7 @@ jobs:
           DISCORD_WEBHOOK_EQUIP: ${{ secrets.DISCORD_WEBHOOK_EQUIP }}
           DISCORD_WEBHOOK_FOUNDRY: ${{ secrets.DISCORD_WEBHOOK_FOUNDRY }}
           DISCORD_WEBHOOK_PANEL: ${{ secrets.DISCORD_WEBHOOK_PANEL }}
+          DISCORD_WEBHOOK_FINANCE: ${{ secrets.DISCORD_WEBHOOK_FINANCE }}
         run: python tw_alerts.py
 
       - name: Commit updated state
