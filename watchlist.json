@@ -147,16 +147,30 @@
   {
     "code": "2615",
     "name": "萬海",
-    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
+    "webhook_envs": [
+      "DISCORD_WEBHOOK_SHIPPING",
+      "DISCORD_WEBHOOK_TRANSPORT"
+    ]
   },
   {
     "code": "2609",
     "name": "陽明",
-    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
+    "webhook_envs": [
+      "DISCORD_WEBHOOK_SHIPPING",
+      "DISCORD_WEBHOOK_TRANSPORT"
+    ]
   },
   {
     "code": "2603",
     "name": "長榮",
-    "webhook_env": "DISCORD_WEBHOOK_SHIPPING"
+    "webhook_envs": [
+      "DISCORD_WEBHOOK_SHIPPING",
+      "DISCORD_WEBHOOK_TRANSPORT"
+    ]
+  },
+  {
+    "code": "6757",
+    "name": "台灣虎航",
+    "webhook_env": "DISCORD_WEBHOOK_TRANSPORT"
   }
 ]
