@@ -1,7 +1,12 @@
 name: TW Stock Alerts
 
 on:
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      force_hannstar:
+        description: 'set to 1 to run the HannStar (6116) site check regardless of time'
+        required: false
+        default: '0'
   schedule:
     # UTC。台灣時間 = UTC+8。08:00~13:00 每小時一次；16:00~22:00 每 30 分鐘一次
     - cron: '0 0-5 * * *'
@@ -37,11 +42,32 @@ jobs:
           DISCORD_WEBHOOK_TRANSPORT: ${{ secrets.DISCORD_WEBHOOK_TRANSPORT }}
         run: python tw_alerts.py
 
+      # 彩晶官網法說會頁：每天台灣時間 09/13/17/21 點的第一次執行才檢查（官網擋一般請求，需無頭瀏覽器）
+      - name: Gate HannStar check
+        id: gate
+        run: |
+          H=$(TZ=Asia/Taipei date +%-H); M=$(TZ=Asia/Taipei date +%-M)
+          if [ "${{ github.event.inputs.force_hannstar }}" = "1" ] || { [ "$M" -lt 30 ] && [ "$H" -ge 9 ] && [ $((H % 4)) -eq 1 ]; }; then
+            echo "run=1" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=0" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: HannStar (6116) conference page check
+        if: steps.gate.outputs.run == '1'
+        continue-on-error: true
+        env:
+          DISCORD_WEBHOOK_PANEL: ${{ secrets.DISCORD_WEBHOOK_PANEL }}
+        run: |
+          pip install -q playwright
+          python -m playwright install --with-deps chromium
+          python hannstar_watch.py
+
       - name: Commit updated state
         run: |
           git config user.name "tw-stock-alerts"
           git config user.email "actions@users.noreply.github.com"
-          git add state.json
+          git add state.json hannstar_state.json
           if git diff --cached --quiet; then
             echo "no state change"
           else
