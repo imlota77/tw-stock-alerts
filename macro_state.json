@@ -37,5 +37,8 @@
   "chg": 29.0,
   "chg1_reported": 133.0
  },
- "tx": {}
+ "tx": {},
+ "last_errors": {
+  "pce": "TimeoutError('The read operation timed out')"
+ }
 }
