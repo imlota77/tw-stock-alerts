@@ -24,7 +24,9 @@ FORCE = "--force" in sys.argv
 TZ = timezone(timedelta(hours=8))
 UA = {"User-Agent": "Mozilla/5.0"}
 MAX_CALLS = 400 if BLS_KEY else 20
-MIN_GAP = 240  # 秒
+MIN_GAP = 240  # 秒（公布時段內）
+OFF_GAP = 3600  # 秒（非公布時段，每小時最多查一次，省額度）
+ERRORS = {}
 
 SERIES = {
     "cpi": "CUSR0000SA0", "cpi_nsa": "CUUR0000SA0",
@@ -336,7 +338,9 @@ def bls_allowed(now, state):
         c = {"day": today, "n": 0, "last": 0}
     if c["n"] >= MAX_CALLS:
         return False
-    return now.timestamp() - c.get("last", 0) >= MIN_GAP
+    hm = now.hour * 60 + now.minute
+    in_window = 20 * 60 + 25 <= hm <= 20 * 60 + 55 or 21 * 60 + 25 <= hm <= 21 * 60 + 55
+    return now.timestamp() - c.get("last", 0) >= (MIN_GAP if in_window else OFF_GAP)
 
 
 def main():
@@ -349,14 +353,14 @@ def main():
     try:
         check_tx(state, now)
     except Exception as ex:
-        print("TX CHECK ERROR", repr(ex), file=sys.stderr)
+        print("TX CHECK ERROR", repr(ex), file=sys.stderr); ERRORS["tx"] = repr(ex)[:200]
     if FORCE or "--bls" in sys.argv or (now.weekday() < 5 and now.hour in (8, 20, 21, 22, 23)):
         try:
             p, embed = build_pce()
             if state.get("pce") != list(p) and send(embed):
                 state["pce"] = list(p)
         except Exception as ex:
-            print("PCE ERROR", repr(ex), file=sys.stderr)
+            print("PCE ERROR", repr(ex), file=sys.stderr); ERRORS["pce"] = repr(ex)[:200]
     if bls_allowed(now, state):
         c = state.get("bls_calls", {})
         if c.get("day") != now.strftime("%Y-%m-%d"):
@@ -377,7 +381,8 @@ def main():
                 if send(embed):
                     state["jobs"] = {"period": list(p), "chg": chg, "chg1_reported": chg1}
         except Exception as ex:
-            print("BLS ERROR", repr(ex), file=sys.stderr)
+            print("BLS ERROR", repr(ex), file=sys.stderr); ERRORS["bls"] = repr(ex)[:200]
+    state["last_errors"] = ERRORS
     if not DRY:
         json.dump(state, open(STATE_PATH, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
 
