@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
     steps:
       - uses: actions/checkout@v4
 
@@ -77,3 +78,14 @@ jobs:
               sleep 3
             done
           fi
+
+      # 盤後報告 / 主動ETF持股：GitHub 自己的 schedule 常晚數小時，改由這支(cron-job.org 準時每30分觸發)順帶叫起來。
+      # 兩支程式都靠 state 檔去重，重複叫沒關係。ETF 台灣 17~23 點、盤後報告 19~23 點
+      - name: Kick ETF / market report workflows
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          H=$(TZ=Asia/Taipei date +%-H)
+          if [ "$H" -ge 17 ] && [ "$H" -le 23 ]; then gh workflow run etf.yml --ref main; fi
+          if [ "$H" -ge 19 ] && [ "$H" -le 23 ]; then gh workflow run market.yml --ref main; fi
