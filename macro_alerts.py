@@ -209,7 +209,7 @@ def check_fomc(state):
 
 # ---------------- 主流程 ----------------
 def bls_allowed(now, state):
-    if FORCE:
+    if FORCE or "--bls" in sys.argv:
         return True
     if now.weekday() >= 5:
         return False

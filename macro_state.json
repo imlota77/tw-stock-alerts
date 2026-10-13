@@ -1,0 +1,40 @@
+{
+ "fomc_seen": [
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260414a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260429a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260520a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260526a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260617b.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260708a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260709a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260714a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260729a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260819a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260825a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916b.htm",
+  "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261007a.htm"
+ ],
+ "bls_calls": {
+  "day": "2026-10-13",
+  "n": 1,
+  "last": 1791897115.139451
+ },
+ "cpi": [
+  2026,
+  8
+ ],
+ "ppi": [
+  2026,
+  8
+ ],
+ "jobs": {
+  "period": [
+   2026,
+   9
+  ],
+  "chg": 29.0,
+  "chg1_reported": 133.0
+ }
+}
