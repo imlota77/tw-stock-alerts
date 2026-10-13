@@ -1,0 +1,48 @@
+name: US Macro Alerts
+
+on:
+  workflow_dispatch: {}
+  schedule:
+    # UTC。台灣時間 = UTC+8。備援用（GitHub 排程常晚到）；準時觸發靠 alerts.yml 順帶叫起來 + cron-job.org
+    # 美東 8:30 公布 CPI/PPI/非農 = 台灣 20:30(夏令)/21:30(冬令)；FOMC 美東 14:00 = 台灣 02:00/03:00
+    - cron: '41 12 * * 1-5'
+    - cron: '41 13 * * 1-5'
+    - cron: '11 18 * * 1-5'
+    - cron: '11 19 * * 1-5'
+
+concurrency:
+  group: macro-alerts
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run macro alerts
+        env:
+          DISCORD_WEBHOOK_MACRO: ${{ secrets.DISCORD_WEBHOOK_MACRO }}
+          BLS_API_KEY: ${{ secrets.BLS_API_KEY }}
+        run: python macro_alerts.py
+
+      - name: Commit updated state
+        run: |
+          git config user.name "tw-stock-alerts"
+          git config user.email "actions@users.noreply.github.com"
+          git add macro_state.json
+          if git diff --cached --quiet; then
+            echo "no state change"
+          else
+            git commit -m "macro state update"
+            for i in 1 2 3; do
+              git pull --rebase -q origin main && git push -q origin main && break
+              sleep 3
+            done
+          fi
