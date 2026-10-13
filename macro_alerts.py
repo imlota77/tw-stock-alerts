@@ -26,7 +26,7 @@ TZ = timezone(timedelta(hours=8))
 UA = {"User-Agent": "Mozilla/5.0"}
 MAX_CALLS = 400 if BLS_KEY else 20
 MIN_GAP = 240  # 秒（公布時段內）
-OFF_GAP = 3600  # 秒（非公布時段，每小時最多查一次，省額度）
+OFF_GAP = 600 if BLS_KEY else 3600  # 秒（非公布時段；有金鑰每 10 分鐘，沒有每小時，省額度）
 ERRORS = {}
 
 SERIES = {
