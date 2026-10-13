@@ -3,8 +3,14 @@ name: Market Report
 on:
   workflow_dispatch: {}
   schedule:
-    # UTC。台灣時間 = UTC+8。每天 22:00；休市日資料日期沒變，程式會自動略過
-    - cron: '0 14 * * *'
+    # UTC。台灣時間 = UTC+8。GitHub 排程常延遲數小時(整點尤其嚴重)，所以避開整點、多排幾班；
+    # 程式靠 market_state.json 去重，只會發一次；休市日資料日期沒變會自動略過
+    # 台灣 19:23 / 20:23 / 21:07 / 21:37 / 22:07 (遇到融資資料還沒更新會等下一班)
+    - cron: '23 11 * * *'
+    - cron: '23 12 * * *'
+    - cron: '7 13 * * *'
+    - cron: '37 13 * * *'
+    - cron: '7 14 * * *'
 
 concurrency:
   group: market-report
