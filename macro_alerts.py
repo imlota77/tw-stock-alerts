@@ -296,13 +296,13 @@ def prev_trading(d, closed):
     return d
 
 
-def fetch_tx_settlement(ym):
-    j = json.loads(http("https://openapi.taifex.com.tw/v1/DailyMarketReportFut"))
-    for r in j:
-        if r.get("Contract") == "TX" and r.get("ContractMonth(Week)") == ym and r.get("TradingSession") == "一般" \
-                and r.get("SettlementPrice") not in (None, "", "NULL", "-"):
-            return r
-    return None
+def fetch_tx_settlement(sd):
+    """台灣期貨交易所「最後結算價」頁：每列 日期|契約月份|臺股期貨結算價|…（每日 CSV 裡到期契約的結算價欄位是 0，不能用）"""
+    s = http("https://www.taifex.com.tw/cht/5/futIndxFSP").decode("utf-8", "ignore")
+    s = re.sub(r"(?s)<(script|style)[^>]*>.*?</\1>", "", s)
+    t = re.sub(r"[\s|]+", "|", htmlmod.unescape(re.sub(r"(?s)<[^>]+>", "|", s)))
+    m = re.search(re.escape(sd.strftime("%Y/%m/%d")) + r"\|" + sd.strftime("%Y%m") + r"\|([\d,]+(?:\.\d+)?)\|", t)
+    return float(m.group(1).replace(",", "")) if m else None
 
 
 def check_tx(state, now):
@@ -328,15 +328,15 @@ def check_tx(state, now):
                 sent[key + "|day"] = True
         if today == sd and now.hour >= 15 and not sent.get(key + "|res"):
             try:
-                r = fetch_tx_settlement(sd.strftime("%Y%m"))
+                px = fetch_tx_settlement(sd)
             except Exception as ex:
                 print("TX ERROR", repr(ex), file=sys.stderr)
-                r = None
-            if r and r.get("Date") == sd.strftime("%Y%m%d"):
-                desc = (f"**結算價 {float(r['SettlementPrice']):,.0f}**\n最後成交價 {r.get('Last')}｜成交量 {r.get('Volume')} 口"
-                        f"｜未沖銷 {r.get('OpenInterest')} 口")
+                px = None
+            if px:
+                desc = (f"**最後結算價 {px:,.0f}**\n這是 TX 月契約到期的結算價（約為最後 30 分鐘加權指數平均），"
+                        "持有到期的部位以此價格現金結算。")
                 if send({"title": f"✅ {tag}｜{sd.strftime('%Y/%m/%d')} 結算結果", "description": desc, "color": 0x8E44AD,
-                         "footer": {"text": "資料：台灣期貨交易所 openapi（TX 一般交易時段）"}}):
+                         "footer": {"text": "資料：台灣期貨交易所「最後結算價」"}}):
                     sent[key + "|res"] = True
     for k in list(sent):
         if k.split("|")[0] < (today - timedelta(days=90)).isoformat():
