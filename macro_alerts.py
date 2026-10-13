@@ -315,6 +315,12 @@ def check_tx(state, now):
         q = "季月" if sd.month in (3, 6, 9, 12) else ""
         tag = f"{sd.month}月台指期{q}結算日"
         eve = prev_trading(sd, closed)
+        if today == sd - timedelta(days=7) and now.hour >= 8 and not sent.get(key + "|week"):
+            if send({"title": f"🗓️ 一週後（{sd.strftime('%m/%d')}）是{tag}",
+                     "description": f"下週{'一二三四五六日'[sd.weekday()]} {sd.strftime('%m/%d')} 是 TX 月契約最後交易日。\n"
+                                    "有持倉的人可提前規劃：是否換倉（轉到下個月契約）、是否降低部位或調整避險。",
+                     "color": 0x8E44AD, "footer": {"text": "台灣期貨交易所｜規則：每月第三個週三，遇休市順延"}}):
+                sent[key + "|week"] = True
         if today == eve and now.hour >= 18 and not sent.get(key + "|eve"):
             if send({"title": f"📅 明天是{tag}（{sd.strftime('%m/%d')}）",
                      "description": "月契約最後交易日。結算價為當天最後一段時間（約 13:00–13:30）加權指數的平均，**不是收盤價**；"
