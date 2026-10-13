@@ -211,7 +211,15 @@ def check_fomc(state):
 
 # ---------------- PCE（FRED 轉載 BEA 資料，免金鑰） ----------------
 def fred_series(sid):
-    txt = http(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={datetime.now(TZ).year - 2}-01-01", timeout=40).decode("utf-8", "ignore")
+    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={datetime.now(TZ).year - 2}-01-01"
+    txt = None
+    for attempt in range(3):  # FRED 偶爾很慢，重試
+        try:
+            txt = http(url, timeout=45).decode("utf-8", "ignore")
+            break
+        except Exception:
+            if attempt == 2:
+                raise
     d = {}
     for line in txt.splitlines()[1:]:
         a = line.split(",")
