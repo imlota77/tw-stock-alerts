@@ -207,6 +207,118 @@ def check_fomc(state):
     state["fomc_seen"] = sorted(seen | {x[0] for x in items if x[0] not in failed})[-200:]
 
 
+# ---------------- PCE（FRED 轉載 BEA 資料，免金鑰） ----------------
+def fred_series(sid):
+    txt = http(f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={datetime.now(TZ).year - 2}-01-01", timeout=40).decode("utf-8", "ignore")
+    d = {}
+    for line in txt.splitlines()[1:]:
+        a = line.split(",")
+        if len(a) == 2 and a[1] not in (".", ""):
+            y, m = a[0].split("-")[:2]
+            d[(int(y), int(m))] = float(a[1])
+    return d
+
+
+def build_pce():
+    head, core = fred_series("PCEPI"), fred_series("PCEPILFE")
+    p = min(latest(head), latest(core))
+
+    def blk(name, d):
+        mom, mom1 = pct(d.get(p), d.get(prev(p))), pct(d.get(prev(p)), d.get(prev(p, 2)))
+        yoy, yoy1 = pct(d.get(p), d.get(prev(p, 12))), pct(d.get(prev(p)), d.get(prev(p, 13)))
+        return f"**{name}**\n月增 **{f(mom, 2)}**（前月 {f(mom1, 2)}）\n年增 **{f(yoy)}**（前月 {f(yoy1)}）"
+
+    return p, {
+        "title": f"🇺🇸 美國 PCE 物價指數｜{label(p)}",
+        "description": blk("整體 PCE", head) + "\n\n" + blk("核心 PCE（不含食品、能源，聯準會最看重）", core),
+        "color": 0xE0A100,
+        "footer": {"text": "資料：美國經濟分析局 BEA（經 FRED 轉載，季調）｜無市場預期值"},
+        "url": "https://www.bea.gov/data/personal-consumption-expenditures-price-index",
+    }
+
+
+# ---------------- 台指期（TX）月結算日 ----------------
+def tw_closed_days():
+    days = set()
+    try:
+        for r in json.loads(http("https://openapi.twse.com.tw/v1/holidaySchedule/holidaySchedule")):
+            txt = r.get("Name", "") + r.get("Description", "")
+            if "開始交易" in txt or "最後交易" in txt:
+                continue
+            d = r.get("Date", "")
+            if len(d) == 7:
+                days.add(datetime(int(d[:3]) + 1911, int(d[3:5]), int(d[5:7])).date())
+    except Exception as ex:
+        print("HOLIDAY ERROR", repr(ex), file=sys.stderr)
+    return days
+
+
+def is_trading(d, closed):
+    return d.weekday() < 5 and d not in closed
+
+
+def settle_date(y, m, closed):
+    d = datetime(y, m, 1).date()
+    d += timedelta(days=(2 - d.weekday()) % 7 + 14)  # 第三個週三
+    while not is_trading(d, closed):
+        d += timedelta(days=1)
+    return d
+
+
+def prev_trading(d, closed):
+    d -= timedelta(days=1)
+    while not is_trading(d, closed):
+        d -= timedelta(days=1)
+    return d
+
+
+def fetch_tx_settlement(ym):
+    j = json.loads(http("https://openapi.taifex.com.tw/v1/DailyMarketReportFut"))
+    for r in j:
+        if r.get("Contract") == "TX" and r.get("ContractMonth(Week)") == ym and r.get("TradingSession") == "一般" \
+                and r.get("SettlementPrice") not in (None, "", "NULL", "-"):
+            return r
+    return None
+
+
+def check_tx(state, now):
+    closed = tw_closed_days()
+    today = now.date()
+    sent = state.setdefault("tx", {})
+    nxt = (today.year + (today.month == 12), today.month % 12 + 1)
+    for sd in (settle_date(today.year, today.month, closed), settle_date(nxt[0], nxt[1], closed)):
+        key = sd.isoformat()
+        q = "季月" if sd.month in (3, 6, 9, 12) else ""
+        tag = f"{sd.month}月台指期{q}結算日"
+        eve = prev_trading(sd, closed)
+        if today == eve and now.hour >= 18 and not sent.get(key + "|eve"):
+            if send({"title": f"📅 明天是{tag}（{sd.strftime('%m/%d')}）",
+                     "description": "月契約最後交易日。結算價為當天最後一段時間（約 13:00–13:30）加權指數的平均，**不是收盤價**；"
+                                    "結算日前後常有換倉與避險動作，盤面波動可能放大。\n週三同時是台指選擇權週契約結算日。",
+                     "color": 0x8E44AD, "footer": {"text": "台灣期貨交易所｜規則：每月第三個週三，遇休市順延"}}):
+                sent[key + "|eve"] = True
+        if today == sd and now.hour >= 8 and not sent.get(key + "|day"):
+            if send({"title": f"⏰ 今天是{tag}（{sd.strftime('%m/%d')}）",
+                     "description": "今天是 TX 月契約最後交易日，13:30 收盤；結算價約 13:45–15:00 後可查。\n留意換倉（轉到下個月契約）與尾盤波動。",
+                     "color": 0x8E44AD, "footer": {"text": "台灣期貨交易所"}}):
+                sent[key + "|day"] = True
+        if today == sd and now.hour >= 15 and not sent.get(key + "|res"):
+            try:
+                r = fetch_tx_settlement(sd.strftime("%Y%m"))
+            except Exception as ex:
+                print("TX ERROR", repr(ex), file=sys.stderr)
+                r = None
+            if r and r.get("Date") == sd.strftime("%Y%m%d"):
+                desc = (f"**結算價 {float(r['SettlementPrice']):,.0f}**\n最後成交價 {r.get('Last')}｜成交量 {r.get('Volume')} 口"
+                        f"｜未沖銷 {r.get('OpenInterest')} 口")
+                if send({"title": f"✅ {tag}｜{sd.strftime('%Y/%m/%d')} 結算結果", "description": desc, "color": 0x8E44AD,
+                         "footer": {"text": "資料：台灣期貨交易所 openapi（TX 一般交易時段）"}}):
+                    sent[key + "|res"] = True
+    for k in list(sent):
+        if k.split("|")[0] < (today - timedelta(days=90)).isoformat():
+            sent.pop(k)
+
+
 # ---------------- 主流程 ----------------
 def bls_allowed(now, state):
     if FORCE or "--bls" in sys.argv:
@@ -234,6 +346,17 @@ def main():
         check_fomc(state)
     except Exception as ex:
         print("FOMC ERROR", repr(ex), file=sys.stderr)
+    try:
+        check_tx(state, now)
+    except Exception as ex:
+        print("TX CHECK ERROR", repr(ex), file=sys.stderr)
+    if FORCE or "--bls" in sys.argv or (now.weekday() < 5 and now.hour in (8, 20, 21, 22, 23)):
+        try:
+            p, embed = build_pce()
+            if state.get("pce") != list(p) and send(embed):
+                state["pce"] = list(p)
+        except Exception as ex:
+            print("PCE ERROR", repr(ex), file=sys.stderr)
     if bls_allowed(now, state):
         c = state.get("bls_calls", {})
         if c.get("day") != now.strftime("%Y-%m-%d"):
