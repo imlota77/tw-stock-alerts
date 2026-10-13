@@ -19,6 +19,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "macro_state.json")
 HOOK = os.environ.get("DISCORD_WEBHOOK_MACRO", "")
 BLS_KEY = os.environ.get("BLS_API_KEY", "")
+FRED_KEY = os.environ.get("FRED_API_KEY", "")
 DRY = "--dry" in sys.argv
 FORCE = "--force" in sys.argv
 TZ = timezone(timedelta(hours=8))
@@ -211,16 +212,29 @@ def check_fomc(state):
 
 # ---------------- PCE（FRED 轉載 BEA 資料，免金鑰） ----------------
 def fred_series(sid):
-    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={datetime.now(TZ).year - 2}-01-01"
+    start = f"{datetime.now(TZ).year - 2}-01-01"
+    d = {}
+    if FRED_KEY:  # 官方 API（穩定）；失敗再退回網頁 CSV
+        try:
+            j = json.loads(http(f"https://api.stlouisfed.org/fred/series/observations?series_id={sid}&api_key={FRED_KEY}"
+                                f"&file_type=json&observation_start={start}", timeout=30))
+            for o in j.get("observations", []):
+                if o.get("value") not in (".", "", None):
+                    y, m = o["date"].split("-")[:2]
+                    d[(int(y), int(m))] = float(o["value"])
+            if d:
+                return d
+        except Exception as ex:
+            print("FRED API ERROR", repr(ex)[:120].replace(FRED_KEY, "***"), file=sys.stderr)
+    url = f"https://fred.stlouisfed.org/graph/fredgraph.csv?id={sid}&cosd={start}"
     txt = None
-    for attempt in range(3):  # FRED 偶爾很慢，重試
+    for attempt in range(3):  # FRED 網頁偶爾很慢，重試
         try:
             txt = http(url, timeout=45).decode("utf-8", "ignore")
             break
         except Exception:
             if attempt == 2:
                 raise
-    d = {}
     for line in txt.splitlines()[1:]:
         a = line.split(",")
         if len(a) == 2 and a[1] not in (".", ""):
