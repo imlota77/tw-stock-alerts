@@ -31,6 +31,7 @@ jobs:
       - name: Run ETF watch
         env:
           DISCORD_WEBHOOK_ETF: ${{ secrets.DISCORD_WEBHOOK_ETF }}
+          DISCORD_WEBHOOK_ETF_DIV: ${{ secrets.DISCORD_WEBHOOK_ETF_DIV }}
         run: python etf_watch.py
 
       - name: Commit updated state

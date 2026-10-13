@@ -108,9 +108,9 @@ def main():
         return
     if d1 != d2:
         print("DATE MISMATCH", d1, d2, file=sys.stderr)
-        # 融資融券通常比三大法人晚更新；台灣時間 22:00 前先等下一班，湊齊同一天再發
+        # 融資融券通常比三大法人晚更新；台灣時間 23:00 前先等下一班，湊齊同一天再發
         tw_hour = (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).hour
-        if not FORCE and tw_hour < 22:
+        if not FORCE and tw_hour < 23:
             print("waiting for margin data", file=sys.stderr)
             return
     if state.get("last") == date and not FORCE:

@@ -23,6 +23,11 @@ ETFS = [
     {"code": "00988A", "name": "主動統一全球創新", "src": "ezmoney", "id": "61YTW"},
     {"code": "00991A", "name": "主動復華未來50", "src": "fhtrust", "id": "ETF23"},
     {"code": "00982A", "name": "主動群益台灣強棒", "src": "capital", "id": "399"},
+    # 被動式高股息 ETF：發到另一個頻道；沒有任何變動就不發，避免天天洗版
+    {"code": "00919", "name": "群益台灣精選高息", "src": "capital", "id": "195",
+     "hook_env": "DISCORD_WEBHOOK_ETF_DIV", "quiet": True},
+    {"code": "00878", "name": "國泰永續高股息", "src": "cathay", "id": "CN",
+     "hook_env": "DISCORD_WEBHOOK_ETF_DIV", "quiet": True},
 ]
 
 
@@ -114,7 +119,19 @@ def fetch_capital(e, on=None):
     return (j["pcf"]["date2"][:10] if hold else None), hold
 
 
-FETCH = {"ezmoney": fetch_ezmoney, "fhtrust": fetch_fhtrust, "capital": fetch_capital}
+def fetch_cathay(e, on=None):
+    """國泰：依日期查持股，從今天往前找第一個有資料的日子（假日會回傳空）。"""
+    start = on or datetime.now(TZ).date()
+    for i in range(0, 6 if on is None else 1):
+        d = start - timedelta(days=i)
+        j = json.loads(get(f"https://cwapi.cathaysite.com.tw/api/ETF/GetETFDetailStockList?FundCode={e['id']}&SearchDate={d.strftime('%Y/%m/%d')}"))
+        hold = {r["stockCode"].strip(): (r.get("stockName", "").strip(), num(r["volumn"])) for r in j.get("result") or [] if r.get("stockCode")}
+        if hold:
+            return d.isoformat(), hold
+    return None, {}
+
+
+FETCH = {"ezmoney": fetch_ezmoney, "fhtrust": fetch_fhtrust, "capital": fetch_capital, "cathay": fetch_cathay}
 
 
 def clean(h):
@@ -173,12 +190,13 @@ def build(e, d_old, d_new, add, out, up, down):
     }
 
 
-def send(embed):
-    if DRY or not HOOK:
+def send(embed, hook=None):
+    hook = hook or HOOK
+    if DRY or not hook:
         print("[DRY]", json.dumps(embed, ensure_ascii=False, indent=1))
         return
     data = json.dumps({"embeds": [embed]}).encode()
-    req = urllib.request.Request(HOOK, data=data, headers={"Content-Type": "application/json", **UA})
+    req = urllib.request.Request(hook, data=data, headers={"Content-Type": "application/json", **UA})
     try:
         urllib.request.urlopen(req, timeout=30).read()
     except Exception as ex:
@@ -218,17 +236,23 @@ def main():
                 print("NO DATA", e["code"], file=sys.stderr)
                 continue
             st = state.get(e["code"])
+            hook = os.environ.get(e["hook_env"], "") if e.get("hook_env") else None
+            if e.get("hook_env") and not hook and not DRY:
+                print("NO WEBHOOK", e["code"], file=sys.stderr)
+                continue
             if st is None:
                 p = prev_snapshot(e, dt)
                 if p:
-                    send(build(e, p[0], dt, *diff({k: tuple(v) for k, v in p[1].items()}, hold)))
+                    send(build(e, p[0], dt, *diff({k: tuple(v) for k, v in p[1].items()}, hold)), hook)
                 else:
                     send({"title": f"{e['code']} {e['name']}｜開始追蹤",
                           "description": f"已記下 **{dt}** 的持股（{len(clean(hold))} 檔）作為基準，之後每天比較新增、剔除、加碼、減碼。",
-                          "color": 0x808080})
+                          "color": 0x808080}, hook)
             elif st["date"] != dt:
                 old = {k: tuple(v) for k, v in st["hold"].items()}
-                send(build(e, st["date"], dt, *diff(old, hold)))
+                d4 = diff(old, hold)
+                if not (e.get("quiet") and not any(d4)):
+                    send(build(e, st["date"], dt, *d4), hook)
             else:
                 continue
             state[e["code"]] = {"date": dt, "hold": {k: list(v) for k, v in hold.items()}}
