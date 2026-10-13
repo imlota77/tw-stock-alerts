@@ -178,5 +178,35 @@
     "code": "2610",
     "name": "華航",
     "webhook_env": "DISCORD_WEBHOOK_TRANSPORT"
+  },
+  {
+    "code": "2377",
+    "name": "微星",
+    "webhook_env": "DISCORD_WEBHOOK_PCBRAND"
+  },
+  {
+    "code": "6150",
+    "name": "撼訊",
+    "webhook_env": "DISCORD_WEBHOOK_PCBRAND"
+  },
+  {
+    "code": "2353",
+    "name": "宏碁",
+    "webhook_env": "DISCORD_WEBHOOK_PCBRAND"
+  },
+  {
+    "code": "2357",
+    "name": "華碩",
+    "webhook_env": "DISCORD_WEBHOOK_PCBRAND"
+  },
+  {
+    "code": "2376",
+    "name": "技嘉",
+    "webhook_env": "DISCORD_WEBHOOK_PCBRAND"
+  },
+  {
+    "code": "3515",
+    "name": "華擎",
+    "webhook_env": "DISCORD_WEBHOOK_PCBRAND"
   }
 ]
