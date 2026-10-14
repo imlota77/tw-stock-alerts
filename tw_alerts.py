@@ -9,7 +9,7 @@ CUR_HOOK = []  # 目前處理中的股票專屬 webhook 清單(沒有就用預�
 DRY = "--dry" in sys.argv
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "state.json")
-# 分批：--shard K/N 只處理 int(代號前4碼) % N == K 的股票；K=0 沿用 state.json，其餘用 state_K.json
+# 分批：--shard K/N 只處理 (int(代號前4碼)//10) % N == K 的股票；K=0 沿用 state.json，其餘用 state_K.json
 SHARD = (0, 1)
 if "--shard" in sys.argv:
     _k, _n = sys.argv[sys.argv.index("--shard") + 1].split("/")
@@ -21,7 +21,7 @@ LEGACY_STATE_PATH = os.path.join(HERE, "state.json")
 
 def in_shard(code):
     try:
-        return int(str(code)[:4]) % SHARD[1] == SHARD[0]
+        return (int(str(code)[:4]) // 10) % SHARD[1] == SHARD[0]
     except ValueError:
         return SHARD[0] == 0
 UA = "Mozilla/5.0 (tw-stock-alerts)"
