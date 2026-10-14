@@ -208,5 +208,15 @@
     "code": "3515",
     "name": "華擎",
     "webhook_env": "DISCORD_WEBHOOK_PCBRAND"
+  },
+  {
+    "code": "6669",
+    "name": "緯穎",
+    "webhook_env": "DISCORD_WEBHOOK_AINET"
+  },
+  {
+    "code": "2345",
+    "name": "智邦",
+    "webhook_env": "DISCORD_WEBHOOK_AINET"
   }
 ]
