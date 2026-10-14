@@ -218,5 +218,25 @@
     "code": "2345",
     "name": "智邦",
     "webhook_env": "DISCORD_WEBHOOK_AINET"
+  },
+  {
+    "code": "2454",
+    "name": "聯發科",
+    "webhook_env": "DISCORD_WEBHOOK_ASIC"
+  },
+  {
+    "code": "3443",
+    "name": "創意",
+    "webhook_env": "DISCORD_WEBHOOK_ASIC"
+  },
+  {
+    "code": "3661",
+    "name": "世芯-KY",
+    "webhook_env": "DISCORD_WEBHOOK_ASIC"
+  },
+  {
+    "code": "6526",
+    "name": "達發",
+    "webhook_env": "DISCORD_WEBHOOK_ASIC"
   }
 ]
