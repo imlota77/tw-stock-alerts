@@ -18,9 +18,9 @@
   "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261013a.htm"
  ],
  "bls_calls": {
-  "day": "2026-10-13",
-  "n": 22,
-  "last": 1791906322.940998
+  "day": "2026-10-14",
+  "n": 1,
+  "last": 1791936482.482039
  },
  "cpi": [
   2026,
@@ -38,7 +38,9 @@
   "chg": 29.0,
   "chg1_reported": 133.0
  },
- "tx": {},
+ "tx": {
+  "2026-10-21|week": true
+ },
  "last_errors": {},
  "pce": [
   2026,
