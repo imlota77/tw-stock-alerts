@@ -19,8 +19,8 @@
  ],
  "bls_calls": {
   "day": "2026-10-14",
-  "n": 4,
-  "last": 1791980718.002733
+  "n": 5,
+  "last": 1791981028.663265
  },
  "cpi": [
   2026,
@@ -42,7 +42,7 @@
   "2026-10-21|week": true
  },
  "last_errors": {
-  "bls": "TypeError(\"'NoneType' object is not subscriptable\")"
+  "bls": "<HTTPError 503: 'Service Unavailable'>"
  },
  "pce": [
   2026,
