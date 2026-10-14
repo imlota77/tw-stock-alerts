@@ -84,6 +84,33 @@ def margin():
     return j["date"], "\n".join(out)
 
 
+def turnover(date):
+    """大盤每日成交資訊（證交所 FMTQIK）：成交金額、股數、筆數、加權指數。date 為 YYYYMMDD。"""
+    try:
+        j = get_json("https://www.twse.com.tw/rwd/zh/afterTrading/FMTQIK?date=&response=json")
+        if j.get("stat") != "OK":
+            return None
+        rows = []
+        for r in j["data"]:
+            y, m, d = r[0].split("/")
+            rows.append((f"{int(y) + 1911}{m}{d}", r))
+        idx = next((i for i, (k, _) in enumerate(rows) if k == date), None)
+        if idx is None:
+            return None
+        r = rows[idx][1]
+        amt = n(r[2]) / 1e8
+        line = f"💰 **成交金額 {amt:,.0f} 億元**"
+        if idx > 0:
+            prev = n(rows[idx - 1][1][2]) / 1e8
+            line += f"（前一交易日 {prev:,.0f} 億，{(amt / prev - 1) * 100:+.1f}%）"
+        line += f"\n成交股數 {n(r[1]) / 1e8:,.1f} 億股｜成交筆數 {n(r[3]) / 1e4:,.0f} 萬筆"
+        line += f"\n加權指數 {r[4]}（{r[5]} 點）"
+        return line
+    except Exception as ex:
+        print("TURNOVER ERROR", repr(ex), file=sys.stderr)
+        return None
+
+
 def send(embed):
     if DRY or not HOOK:
         print("[DRY]", json.dumps(embed, ensure_ascii=False, indent=1))
@@ -117,6 +144,9 @@ def main():
         print("already sent", date)
         return
     fields = []
+    tov = turnover(date)
+    if tov:
+        fields.append({"name": f"大盤成交（上市，{fmt_date(date)}）", "value": tov})
     if inst:
         fields.append({"name": f"三大法人買賣金額（億元，{fmt_date(d1)}）", "value": inst})
     if mar:
