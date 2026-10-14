@@ -253,5 +253,15 @@
     "code": "4938",
     "name": "和碩",
     "webhook_env": "DISCORD_WEBHOOK_AINET"
+  },
+  {
+    "code": "2382",
+    "name": "廣達",
+    "webhook_env": "DISCORD_WEBHOOK_AINET"
+  },
+  {
+    "code": "3231",
+    "name": "緯創",
+    "webhook_env": "DISCORD_WEBHOOK_AINET"
   }
 ]
