@@ -263,5 +263,15 @@
     "code": "3231",
     "name": "緯創",
     "webhook_env": "DISCORD_WEBHOOK_AINET"
+  },
+  {
+    "code": "6196",
+    "name": "帆宣",
+    "webhook_env": "DISCORD_WEBHOOK_SEMI"
+  },
+  {
+    "code": "3167",
+    "name": "大量",
+    "webhook_env": "DISCORD_WEBHOOK_SEMI"
   }
 ]

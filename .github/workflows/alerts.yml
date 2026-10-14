@@ -66,6 +66,7 @@ jobs:
           DISCORD_WEBHOOK_PCBRAND: ${{ secrets.DISCORD_WEBHOOK_PCBRAND }}
           DISCORD_WEBHOOK_AINET: ${{ secrets.DISCORD_WEBHOOK_AINET }}
           DISCORD_WEBHOOK_ASIC: ${{ secrets.DISCORD_WEBHOOK_ASIC }}
+          DISCORD_WEBHOOK_SEMI: ${{ secrets.DISCORD_WEBHOOK_SEMI }}
         run: python tw_alerts.py --shard ${{ matrix.shard }}/2
 
       # 彩晶官網法說會頁：每天台灣時間 09/13/17/21 點的第一次執行才檢查（官網擋一般請求，需無頭瀏覽器）；只在第 0 批跑
