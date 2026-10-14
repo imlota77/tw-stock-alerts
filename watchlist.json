@@ -238,5 +238,20 @@
     "code": "6526",
     "name": "達發",
     "webhook_env": "DISCORD_WEBHOOK_ASIC"
+  },
+  {
+    "code": "2317",
+    "name": "鴻海",
+    "webhook_env": "DISCORD_WEBHOOK_AINET"
+  },
+  {
+    "code": "3706",
+    "name": "神達",
+    "webhook_env": "DISCORD_WEBHOOK_AINET"
+  },
+  {
+    "code": "4938",
+    "name": "和碩",
+    "webhook_env": "DISCORD_WEBHOOK_AINET"
   }
 ]
