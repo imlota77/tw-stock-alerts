@@ -9,6 +9,21 @@ CUR_HOOK = []  # 目前處理中的股票專屬 webhook 清單(沒有就用預�
 DRY = "--dry" in sys.argv
 HERE = os.path.dirname(os.path.abspath(__file__))
 STATE_PATH = os.path.join(HERE, "state.json")
+# 分批：--shard K/N 只處理 int(代號前4碼) % N == K 的股票；K=0 沿用 state.json，其餘用 state_K.json
+SHARD = (0, 1)
+if "--shard" in sys.argv:
+    _k, _n = sys.argv[sys.argv.index("--shard") + 1].split("/")
+    SHARD = (int(_k), int(_n))
+    if SHARD[0] != 0:
+        STATE_PATH = os.path.join(HERE, f"state_{SHARD[0]}.json")
+LEGACY_STATE_PATH = os.path.join(HERE, "state.json")
+
+
+def in_shard(code):
+    try:
+        return int(str(code)[:4]) % SHARD[1] == SHARD[0]
+    except ValueError:
+        return SHARD[0] == 0
 UA = "Mozilla/5.0 (tw-stock-alerts)"
 COLORS = {"rev": 0x2ECC71, "report": 0x3498DB, "meeting": 0x9B59B6, "board": 0xE67E22, "warn": 0xE74C3C}
 QNUM = {"一": 1, "二": 2, "三": 3, "四": 4}
@@ -504,12 +519,19 @@ def deadline_warn(stock, st, today):
 def main():
     wl = json.load(open(os.path.join(HERE, "watchlist.json"), encoding="utf-8"))
     state = json.load(open(STATE_PATH, encoding="utf-8")) if os.path.exists(STATE_PATH) else {}
+    if STATE_PATH != LEGACY_STATE_PATH and os.path.exists(LEGACY_STATE_PATH):
+        legacy = json.load(open(LEGACY_STATE_PATH, encoding="utf-8"))  # 第一次分批時，從舊的 state.json 搬進來
+        for c, v in legacy.items():
+            if c not in state and isinstance(v, dict) and in_shard(c):
+                state[c] = v
     today = datetime.now(TZ).date()
     if "--date" in sys.argv:
         today = date.fromisoformat(sys.argv[sys.argv.index("--date") + 1])
     global CUR_HOOK
     for stock in wl:
         code = stock["code"]
+        if not in_shard(code):
+            continue
         envs = stock.get("webhook_envs") or ([stock["webhook_env"]] if stock.get("webhook_env") else [])
         CUR_HOOK = [os.environ[e] for e in envs if os.environ.get(e)]
         if envs and not CUR_HOOK and not DRY:
