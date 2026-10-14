@@ -41,9 +41,7 @@
  "tx": {
   "2026-10-21|week": true
  },
- "last_errors": {
-  "bls": "<HTTPError 503: 'Service Unavailable'>"
- },
+ "last_errors": {},
  "pce": [
   2026,
   8
