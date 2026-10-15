@@ -402,7 +402,7 @@
    {
     "date": "2026-10-15",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "法說會"
    }
   ],
