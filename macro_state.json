@@ -19,8 +19,8 @@
  ],
  "bls_calls": {
   "day": "2026-10-15",
-  "n": 2,
-  "last": 1792024242.783275
+  "n": 3,
+  "last": 1792066820.844491
  },
  "cpi": [
   2026,
@@ -41,7 +41,9 @@
  "tx": {
   "2026-10-21|week": true
  },
- "last_errors": {},
+ "last_errors": {
+  "bls": "TypeError(\"'NoneType' object is not subscriptable\")"
+ },
  "pce": [
   2026,
   8
