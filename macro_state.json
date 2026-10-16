@@ -19,8 +19,8 @@
  ],
  "bls_calls": {
   "day": "2026-10-16",
-  "n": 5,
-  "last": 1792153830.498003
+  "n": 6,
+  "last": 1792154116.143781
  },
  "cpi": [
   2026,
@@ -41,7 +41,9 @@
  "tx": {
   "2026-10-21|week": true
  },
- "last_errors": {},
+ "last_errors": {
+  "bls": "<HTTPError 503: 'Service Unavailable'>"
+ },
  "pce": [
   2026,
   8
