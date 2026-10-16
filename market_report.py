@@ -111,6 +111,33 @@ def turnover(date):
         return None
 
 
+def keep_rate(date):
+    """全市場信用交易擔保維持率（證交所臺股儀表板「全市場」，API BFIJ3U_TREND）。
+    整戶合併計算融資＋融券，是官方口徑，不是民間依個股推估的數字。date 為 YYYYMMDD。"""
+    try:
+        j = get_json(f"https://www.twse.com.tw/rwd/zh/marginTrading/BFIJ3U_TREND?response=json&days=5&date={date}")
+        if j.get("stat") != "OK":
+            return None
+        rows = j.get("data") or []
+        idx = next((i for i, r in enumerate(rows) if r.get("date") == date), None)
+        if idx is None:
+            return None
+        r = rows[idx]
+        rate = float(r["keepRate"])
+        line = f"🛡️ **全市場整戶擔保維持率 {rate:.2f}%**"
+        if idx > 0:
+            line += f"（較前一交易日 {rate - float(rows[idx - 1]['keepRate']):+.2f} 個百分點）"
+        line += (
+            f"\n整戶維持率低於 130% 戶數 {int(r['belowAccNum']):,} 戶｜追繳金額 {int(r['callAmt']) / 1e8:,.2f} 億元"
+            f"\n次日處分戶數 {int(r['exeAccNum']):,} 戶｜處分金額 {int(r['exeAmt']) / 1e8:,.2f} 億元"
+            f"\n當日信用交易戶數 {int(r['marginAccNum']):,} 戶（占總開戶 {float(r['marginAccRate']):.2f}%）"
+        )
+        return line
+    except Exception as ex:
+        print("KEEP RATE ERROR", repr(ex), file=sys.stderr)
+        return None
+
+
 def send(embed):
     if DRY or not HOOK:
         print("[DRY]", json.dumps(embed, ensure_ascii=False, indent=1))
@@ -143,6 +170,13 @@ def main():
     if state.get("last") == date and not FORCE:
         print("already sent", date)
         return
+    kr = keep_rate(date)
+    if kr is None:
+        # 維持率通常比融資融券晚更新；台灣時間 23:00 前先等下一班，23:00 後沒資料就略過這一欄照發
+        tw_hour = (datetime.datetime.utcnow() + datetime.timedelta(hours=8)).hour
+        if not FORCE and tw_hour < 23:
+            print("waiting for keep rate data", file=sys.stderr)
+            return
     fields = []
     tov = turnover(date)
     if tov:
@@ -151,11 +185,13 @@ def main():
         fields.append({"name": f"三大法人買賣金額（億元，{fmt_date(d1)}）", "value": inst})
     if mar:
         fields.append({"name": f"信用交易統計（上市，{fmt_date(d2)}）", "value": mar})
+    if kr:
+        fields.append({"name": f"融資維持率｜市場整體（{fmt_date(date)}）", "value": kr})
     embed = {
         "title": f"台股盤後｜三大法人與融資融券（{fmt_date(date)}）",
         "color": 0x2B7DE9,
         "fields": fields,
-        "footer": {"text": "資料：臺灣證券交易所（上市）｜紅=買超/增加 綠=賣超/減少"},
+        "footer": {"text": "資料：臺灣證券交易所（上市；維持率為臺股儀表板全市場整戶口徑，非個人帳戶）｜紅=買超/增加 綠=賣超/減少"},
     }
     if send(embed) and not DRY:
         state["last"] = date
