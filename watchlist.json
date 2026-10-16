@@ -273,5 +273,35 @@
     "code": "3167",
     "name": "大量",
     "webhook_env": "DISCORD_WEBHOOK_SEMI"
+  },
+  {
+    "code": "4746",
+    "name": "台耀",
+    "webhook_env": "DISCORD_WEBHOOK_CCL"
+  },
+  {
+    "code": "6672",
+    "name": "騰輝電子-KY",
+    "webhook_env": "DISCORD_WEBHOOK_CCL"
+  },
+  {
+    "code": "6213",
+    "name": "聯茂",
+    "webhook_env": "DISCORD_WEBHOOK_CCL"
+  },
+  {
+    "code": "2383",
+    "name": "台光電",
+    "webhook_env": "DISCORD_WEBHOOK_CCL"
+  },
+  {
+    "code": "1815",
+    "name": "富喬",
+    "webhook_env": "DISCORD_WEBHOOK_CCL"
+  },
+  {
+    "code": "1303",
+    "name": "南亞",
+    "webhook_env": "DISCORD_WEBHOOK_CCL"
   }
 ]
