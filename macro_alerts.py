@@ -321,6 +321,12 @@ def check_tx(state, now):
                                     "有持倉的人可提前規劃：是否換倉（轉到下個月契約）、是否降低部位或調整避險。",
                      "color": 0x8E44AD, "footer": {"text": "台灣期貨交易所｜規則：每月第三個週三，遇休市順延"}}):
                 sent[key + "|week"] = True
+        if today == sd - timedelta(days=3) and now.hour >= 8 and not sent.get(key + "|d3"):
+            if send({"title": f"🗓️ 三天後（{sd.strftime('%m/%d')}）是{tag}",
+                     "description": f"{sd.strftime('%m/%d')}（週{'一二三四五六日'[sd.weekday()]}）是 TX 月契約最後交易日，剩 3 天。\n"
+                                    "還沒處理持倉的人：現在該決定換倉（轉到下個月契約）、降低部位或調整避險了。",
+                     "color": 0x8E44AD, "footer": {"text": "台灣期貨交易所｜規則：每月第三個週三，遇休市順延"}}):
+                sent[key + "|d3"] = True
         if today == eve and now.hour >= 18 and not sent.get(key + "|eve"):
             if send({"title": f"📅 明天是{tag}（{sd.strftime('%m/%d')}）",
                      "description": "月契約最後交易日。結算價為當天最後一段時間（約 13:00–13:30）加權指數的平均，**不是收盤價**；"
