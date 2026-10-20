@@ -39,7 +39,8 @@
   "chg1_reported": 133.0
  },
  "tx": {
-  "2026-10-21|week": true
+  "2026-10-21|week": true,
+  "2026-10-21|eve": true
  },
  "last_errors": {},
  "pce": [
