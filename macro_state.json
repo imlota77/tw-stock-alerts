@@ -41,7 +41,8 @@
  "tx": {
   "2026-10-21|week": true,
   "2026-10-21|eve": true,
-  "2026-10-21|day": true
+  "2026-10-21|day": true,
+  "2026-10-21|res": true
  },
  "last_errors": {},
  "pce": [
