@@ -758,7 +758,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "17:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -2369,7 +2371,9 @@
     "kind": "board",
     "text": "115年第三季",
     "period": "115Q3",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
