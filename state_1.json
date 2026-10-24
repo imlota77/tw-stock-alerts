@@ -369,19 +369,7 @@
     "text": "法說會"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-10-21",
-    "kind": "meeting",
-    "text": "法說會",
-    "time": "15:00",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true
  },
  "2330": {
