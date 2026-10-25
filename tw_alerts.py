@@ -481,8 +481,9 @@ def check_materials(stock, st, today):
             for seq in ("001", "002"):
                 for ext in ("pptx", "pdf"):
                     url = f"https://mopsov.twse.com.tw/nas/STR/{code}{d.strftime('%Y%m%d')}{lang}{seq}.{ext}"
-                    s, _ = http(url, method="HEAD", retries=1)
-                    if s == 200:
+                    # 2026-10 起 mopsov 對 HEAD 一律回 307，改用 Range GET（存在 206、不存在 404）
+                    s, _ = http(url, headers={"Range": "bytes=0-0"}, retries=1)
+                    if s in (200, 206):
                         found = url
                         break
                 if found:
