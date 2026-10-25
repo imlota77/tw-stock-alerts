@@ -364,7 +364,7 @@
   "meetings": [
    {
     "date": "2026-10-21",
-    "mat": false,
+    "mat": true,
     "late": true,
     "text": "法說會"
    }
@@ -425,7 +425,7 @@
   "meetings": [
    {
     "date": "2026-10-15",
-    "mat": false,
+    "mat": true,
     "late": true,
     "text": "法說會"
    }
