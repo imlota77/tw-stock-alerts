@@ -289,7 +289,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "16:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -1050,7 +1052,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "14:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
