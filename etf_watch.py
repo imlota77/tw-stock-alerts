@@ -6,6 +6,7 @@ import json
 import os
 import re
 import sys
+import urllib.parse
 import urllib.request
 from datetime import date, datetime, timedelta, timezone
 
@@ -23,6 +24,13 @@ ETFS = [
     {"code": "00988A", "name": "主動統一全球創新", "src": "ezmoney", "id": "61YTW"},
     {"code": "00991A", "name": "主動復華未來50", "src": "fhtrust", "id": "ETF23"},
     {"code": "00982A", "name": "主動群益台灣強棒", "src": "capital", "id": "399"},
+    {"code": "00992A", "name": "主動群益科技創新", "src": "capital", "id": "500"},
+    {"code": "00400A", "name": "主動國泰動能高息", "src": "cathay", "id": "EA"},
+    {"code": "00985A", "name": "主動野村台灣50", "src": "nomura", "id": "00985A"},
+    {"code": "00990A", "name": "主動元大AI新經濟", "src": "yuanta", "id": "00990A"},
+    {"code": "00406A", "name": "主動中信台灣收益", "src": "ctbc", "id": "E0038"},
+    {"code": "00405A", "name": "主動富邦台灣龍耀", "src": "fubon", "id": "00405A"},
+    {"code": "00407A", "name": "主動凱基台灣", "src": "kgi", "id": "J024"},
     # 被動式高股息 ETF：發到另一個頻道；沒有任何變動就不發，避免天天洗版
     {"code": "00919", "name": "群益台灣精選高息", "src": "capital", "id": "195",
      "hook_env": "DISCORD_WEBHOOK_ETF_DIV", "quiet": True},
@@ -131,7 +139,77 @@ def fetch_cathay(e, on=None):
     return None, {}
 
 
-FETCH = {"ezmoney": fetch_ezmoney, "fhtrust": fetch_fhtrust, "capital": fetch_capital, "cathay": fetch_cathay}
+def fetch_nomura(e, on=None):
+    body = json.dumps({"FundID": e["id"], "SearchDate": on.isoformat() if on else None}).encode()
+    j = json.loads(get("https://www.nomurafunds.com.tw/API/ETFAPI/api/Fund/GetFundAssets", data=body,
+                       headers={"Content-Type": "application/json"}))
+    d = j["Entries"]["Data"]
+    hold = {}
+    for t in d.get("Table") or []:
+        if t.get("TableTitle", "").strip() == "股票":
+            for r in t.get("Rows") or []:
+                hold[r[0].strip()] = (r[1].strip(), num(r[2]))
+    return (d["FundAsset"]["NavDate"].replace("/", "-") if hold else None), hold
+
+
+def fetch_yuanta(e, on=None):
+    """元大：持股比重藏在頁面內嵌的 __NUXT__ 資料裡（沒有歷史日期可查）。"""
+    page = get(f"https://www.yuantaetfs.com/tradeInfo/pcf/{e['id']}")
+    hold = {}
+    for m in re.finditer(r'\{code:"([^"]+)",[^{}]*?name:"([^"]*)",ename:"[^"]*",weights:[^,{}]+,qty:(\d+)\}', page):
+        hold[m.group(1).strip()] = (m.group(2).strip(), int(m.group(3)))
+    m = re.search(r"-股票.{0,80}?(\d{4}/\d{2}/\d{2})", re.sub(r"<[^>]+>", " ", page), re.S)
+    return (m.group(1).replace("/", "-") if m and hold else None), hold
+
+
+def fetch_ctbc(e, on=None):
+    """中信：先向 AuthToken 要 token，再帶在網址與 body 查持股。"""
+    h = {"Content-Type": "application/json", "Origin": "https://www.ctbcinvestments.com",
+         "Referer": "https://www.ctbcinvestments.com/"}
+    base = "https://www.ctbcinvestments.com.tw/API"
+    tok = json.loads(get(f"{base}/home/AuthToken?token=www.ctbcinvestments.com", data=b"{}", headers=h))["Data"]["token"]
+    body = json.dumps({"token": tok, "FID": e["id"], "StartDate": (on or datetime.now(TZ).date()).isoformat()}).encode()
+    j = json.loads(get(f"{base}/etf/ETFHoldingWeight?token=" + urllib.parse.quote(tok), data=body, headers=h))
+    d = j.get("Data") or {}
+    hold = {}
+    for g in d.get("FundAssetsDetail") or []:
+        if g.get("Code") == "STOCK":
+            for r in g.get("Data") or []:
+                hold[r["code_"].strip()] = (r.get("name_", "").strip(), num(r["qty_"]))
+    dt = (d.get("FundAssets") or [{}])[0].get("NAV_DT", "")[:10]
+    return (dt if hold and dt else None), hold
+
+
+def _cells(row):
+    return [htmlmod.unescape(re.sub(r"<[^>]+>", "", c)).strip() for c in re.findall(r"<t[dh][^>]*>(.*?)</t[dh]>", row, re.S)]
+
+
+def fetch_fubon(e, on=None):
+    page = get(f"https://websys.fsit.com.tw/FubonETF/Trade/Assets.aspx?stkId={e['id']}&lan=TW")
+    t = re.search(r"<table.*?</table>", page, re.S)
+    hold = {}
+    for r in re.findall(r"<tr.*?</tr>", t.group(0) if t else "", re.S):
+        c = _cells(r)
+        if len(c) >= 3 and re.fullmatch(r"[0-9A-Z]{4,6}", c[0]):
+            hold[c[0]] = (c[1], num(c[2]))
+    m = re.search(r"(\d{4})/(\d{1,2})/(\d{1,2})", re.sub(r"<[^>]+>", " ", page))
+    return (f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}" if m and hold else None), hold
+
+
+def fetch_kgi(e, on=None):
+    page = get(f"https://www.kgifund.com.tw/Fund/Detail?fundID={e['id']}")
+    t = re.search(r"<table.*?</table>", page, re.S)
+    hold = {}
+    for r in re.findall(r'<tr name="content".*?</tr>', t.group(0) if t else "", re.S):
+        c = _cells(r)
+        if len(c) >= 3:
+            hold[c[0]] = (c[1], num(c[2]))
+    m = re.search(r"\((\d{4})/(\d{2})/(\d{2})\)", re.sub(r"<[^>]+>", " ", page))
+    return ("-".join(m.groups()) if m and hold else None), hold
+
+
+FETCH = {"ezmoney": fetch_ezmoney, "fhtrust": fetch_fhtrust, "capital": fetch_capital, "cathay": fetch_cathay,
+         "nomura": fetch_nomura, "yuanta": fetch_yuanta, "ctbc": fetch_ctbc, "fubon": fetch_fubon, "kgi": fetch_kgi}
 
 
 def clean(h):
