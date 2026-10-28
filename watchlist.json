@@ -235,11 +235,6 @@
     "webhook_env": "DISCORD_WEBHOOK_ASIC"
   },
   {
-    "code": "6526",
-    "name": "達發",
-    "webhook_env": "DISCORD_WEBHOOK_ASIC"
-  },
-  {
     "code": "2317",
     "name": "鴻海",
     "webhook_env": "DISCORD_WEBHOOK_AINET"
