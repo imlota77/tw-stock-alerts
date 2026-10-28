@@ -398,5 +398,10 @@
     "code": "3189",
     "name": "景碩",
     "webhook_env": "DISCORD_WEBHOOK_PCBSUB"
+  },
+  {
+    "code": "3035",
+    "name": "智原",
+    "webhook_env": "DISCORD_WEBHOOK_ASIC"
   }
 ]
