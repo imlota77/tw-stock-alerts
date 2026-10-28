@@ -19,8 +19,8 @@
  ],
  "bls_calls": {
   "day": "2026-10-28",
-  "n": 19,
-  "last": 1793195719.563978
+  "n": 20,
+  "last": 1793196320.303032
  },
  "cpi": [
   2026,
@@ -44,9 +44,7 @@
   "2026-10-21|day": true,
   "2026-10-21|res": true
  },
- "last_errors": {
-  "pce": "TimeoutError('The read operation timed out')"
- },
+ "last_errors": {},
  "pce": [
   2026,
   8
