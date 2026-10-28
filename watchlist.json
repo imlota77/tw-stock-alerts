@@ -272,10 +272,7 @@
   {
     "code": "3167",
     "name": "大量",
-    "webhook_envs": [
-      "DISCORD_WEBHOOK_SEMI",
-      "DISCORD_WEBHOOK_PCBSUB"
-    ]
+    "webhook_env": "DISCORD_WEBHOOK_PCBSUB"
   },
   {
     "code": "6274",
