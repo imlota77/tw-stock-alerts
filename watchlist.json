@@ -303,5 +303,40 @@
     "code": "1303",
     "name": "南亞",
     "webhook_env": "DISCORD_WEBHOOK_CCL"
+  },
+  {
+    "code": "2880",
+    "name": "華南金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2884",
+    "name": "玉山金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2886",
+    "name": "兆豐金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2887",
+    "name": "台新新光金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2889",
+    "name": "國票金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2891",
+    "name": "中信金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
+  },
+  {
+    "code": "2892",
+    "name": "第一金",
+    "webhook_env": "DISCORD_WEBHOOK_FINANCE"
   }
 ]
