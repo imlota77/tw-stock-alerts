@@ -31,11 +31,9 @@ ETFS = [
     {"code": "00406A", "name": "主動中信台灣收益", "src": "ctbc", "id": "E0038"},
     {"code": "00405A", "name": "主動富邦台灣龍耀", "src": "fubon", "id": "00405A"},
     {"code": "00407A", "name": "主動凱基台灣", "src": "kgi", "id": "J024"},
-    # 被動式高股息 ETF：發到另一個頻道；沒有任何變動就不發，避免天天洗版
-    {"code": "00919", "name": "群益台灣精選高息", "src": "capital", "id": "195",
-     "hook_env": "DISCORD_WEBHOOK_ETF_DIV", "quiet": True},
-    {"code": "00878", "name": "國泰永續高股息", "src": "cathay", "id": "CN",
-     "hook_env": "DISCORD_WEBHOOK_ETF_DIV", "quiet": True},
+    {"code": "00919", "name": "群益台灣精選高息", "src": "capital", "id": "195"},
+    {"code": "00878", "name": "國泰永續高股息", "src": "cathay", "id": "CN"},
+    {"code": "00735", "name": "國泰臺韓科技", "src": "cathay", "id": "AW"},
 ]
 
 
