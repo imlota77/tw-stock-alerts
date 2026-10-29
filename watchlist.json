@@ -5,11 +5,13 @@
   },
   {
     "code": "2449",
-    "name": "京元電子"
+    "name": "京元電子",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   },
   {
     "code": "3711",
-    "name": "日月光投控"
+    "name": "日月光投控",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   },
   {
     "code": "2330",
@@ -61,22 +63,22 @@
   {
     "code": "6187",
     "name": "萬潤",
-    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   },
   {
     "code": "3131",
     "name": "弘塑",
-    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   },
   {
     "code": "3583",
     "name": "辛耘",
-    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   },
   {
     "code": "2467",
     "name": "志聖",
-    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   },
   {
     "code": "2303",
@@ -262,7 +264,7 @@
   {
     "code": "6196",
     "name": "帆宣",
-    "webhook_env": "DISCORD_WEBHOOK_SEMI"
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   },
   {
     "code": "3167",
@@ -498,5 +500,65 @@
     "code": "3289",
     "name": "宜特",
     "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "6239",
+    "name": "力成",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "6510",
+    "name": "精測",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "6257",
+    "name": "矽格",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "6515",
+    "name": "穎崴",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "6223",
+    "name": "旺矽",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "7769",
+    "name": "鴻勁",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "2360",
+    "name": "致茂",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "1560",
+    "name": "中砂",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "6739",
+    "name": "竹陞科技",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "6640",
+    "name": "均華",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "6667",
+    "name": "信紘科",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "3680",
+    "name": "家登",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   }
 ]
