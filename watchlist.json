@@ -596,5 +596,10 @@
     "code": "3211",
     "name": "順達",
     "webhook_env": "DISCORD_WEBHOOK_POWER"
+  },
+  {
+    "code": "6933",
+    "name": "AMAX-KY",
+    "webhook_env": "DISCORD_WEBHOOK_6933"
   }
 ]
