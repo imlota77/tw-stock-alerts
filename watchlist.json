@@ -585,5 +585,15 @@
     "code": "3665",
     "name": "貿聯-KY",
     "webhook_env": "DISCORD_WEBHOOK_POWER"
+  },
+  {
+    "code": "6781",
+    "name": "AES-KY",
+    "webhook_env": "DISCORD_WEBHOOK_POWER"
+  },
+  {
+    "code": "3211",
+    "name": "順達",
+    "webhook_env": "DISCORD_WEBHOOK_POWER"
   }
 ]
