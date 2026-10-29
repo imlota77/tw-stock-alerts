@@ -56,7 +56,7 @@
   {
     "code": "3498",
     "name": "陽程",
-    "webhook_env": "DISCORD_WEBHOOK_EQUIP"
+    "webhook_env": "DISCORD_WEBHOOK_3498"
   },
   {
     "code": "6187",
