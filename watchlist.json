@@ -761,5 +761,20 @@
     "code": "3707",
     "name": "漢磊",
     "webhook_env": "DISCORD_WEBHOOK_WAFER"
+  },
+  {
+    "code": "1530",
+    "name": "亞崴",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "4526",
+    "name": "東台",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "7709",
+    "name": "榮田",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
   }
 ]
