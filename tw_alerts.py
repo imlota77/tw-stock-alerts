@@ -252,6 +252,9 @@ def classify(title):
     # 其他寫法：「董事會通過…財務報告」「業經提報董事會通過」「公告本公司115年第2季合併財務報告」「2026年第二季財務報告」
     if fin and parse_title_period(t) and not any(x in t for x in REPORT_EXCL):
         return "report"
+    # KY 公司寫法：「本公司董事會通過115年第二季自結財務資訊」，內文格式同財報公告
+    if "自結財務資訊" in t and "董事會" in t and parse_title_period(t) and not any(x in t for x in REPORT_EXCL):
+        return "report"
     if "受邀參加" in t:
         return "invite"
     if "法人說明會" in t:
@@ -429,6 +432,14 @@ def check_events(stock, st, today, first):
         st["seen"].append(key)
         if first and latest.get(k) != key:
             continue
+        if k == "report" and not first:
+            # 分類規則放寬後，舊財報公告會變成「沒看過」：超過 10 天的只補記期別，不發
+            d = parse_roc_date(it[2])
+            if not d or (today - d).days > 10:
+                per = parse_title_period(it[4])
+                if per and f"{per[0]}Q{per[1]}" not in st["reports"]:
+                    st["reports"].append(f"{per[0]}Q{per[1]}")
+                continue
         if k == "attention":
             # 新增此類別時舊公告不在 seen 裡，只發 3 天內的，避免把歷史注意股公告整批補發
             d = parse_roc_date(it[2])
