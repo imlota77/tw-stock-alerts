@@ -217,7 +217,7 @@
   {
     "code": "2345",
     "name": "智邦",
-    "webhook_env": "DISCORD_WEBHOOK_AINET"
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
   },
   {
     "code": "2454",
@@ -403,5 +403,120 @@
     "code": "3035",
     "name": "智原",
     "webhook_env": "DISCORD_WEBHOOK_ASIC"
+  },
+  {
+    "code": "3081",
+    "name": "聯亞",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "4971",
+    "name": "IET-KY",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "2455",
+    "name": "全新",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "3234",
+    "name": "光環",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "4979",
+    "name": "華星光",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "3450",
+    "name": "聯鈞",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "6451",
+    "name": "訊芯-KY",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "4977",
+    "name": "眾達-KY",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "4908",
+    "name": "前鼎",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "3363",
+    "name": "上詮",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "3163",
+    "name": "波若威",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "3008",
+    "name": "大立光",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "6789",
+    "name": "采鈺",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "6442",
+    "name": "光聖",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "4991",
+    "name": "環宇-KY",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "2466",
+    "name": "冠西電",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "6223",
+    "name": "旺矽",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "6515",
+    "name": "穎崴",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "6830",
+    "name": "汎銓",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "7769",
+    "name": "鴻勁",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "2360",
+    "name": "致茂",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "3587",
+    "name": "閎康",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "3289",
+    "name": "宜特",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
   }
 ]
