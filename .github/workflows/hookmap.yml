@@ -1,0 +1,46 @@
+name: hookmap (temporary)
+on: workflow_dispatch
+jobs:
+  map:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Hash webhook secrets
+        env:
+          S_2330: ${{ secrets.DISCORD_WEBHOOK_2330 }}
+          S_3498: ${{ secrets.DISCORD_WEBHOOK_3498 }}
+          S_AINET: ${{ secrets.DISCORD_WEBHOOK_AINET }}
+          S_ASIC: ${{ secrets.DISCORD_WEBHOOK_ASIC }}
+          S_CCL: ${{ secrets.DISCORD_WEBHOOK_CCL }}
+          S_CPO: ${{ secrets.DISCORD_WEBHOOK_CPO }}
+          S_EQUIP: ${{ secrets.DISCORD_WEBHOOK_EQUIP }}
+          S_ETF: ${{ secrets.DISCORD_WEBHOOK_ETF }}
+          S_ETF_DIV: ${{ secrets.DISCORD_WEBHOOK_ETF_DIV }}
+          S_FINANCE: ${{ secrets.DISCORD_WEBHOOK_FINANCE }}
+          S_FOUNDRY: ${{ secrets.DISCORD_WEBHOOK_FOUNDRY }}
+          S_MACRO: ${{ secrets.DISCORD_WEBHOOK_MACRO }}
+          S_MARKET: ${{ secrets.DISCORD_WEBHOOK_MARKET }}
+          S_OSAT: ${{ secrets.DISCORD_WEBHOOK_OSAT }}
+          S_PANEL: ${{ secrets.DISCORD_WEBHOOK_PANEL }}
+          S_PASSIVE: ${{ secrets.DISCORD_WEBHOOK_PASSIVE }}
+          S_PCBRAND: ${{ secrets.DISCORD_WEBHOOK_PCBRAND }}
+          S_PCBSUB: ${{ secrets.DISCORD_WEBHOOK_PCBSUB }}
+          S_POWER: ${{ secrets.DISCORD_WEBHOOK_POWER }}
+          S_SEMI: ${{ secrets.DISCORD_WEBHOOK_SEMI }}
+          S_SHIPPING: ${{ secrets.DISCORD_WEBHOOK_SHIPPING }}
+          S_TRANSPORT: ${{ secrets.DISCORD_WEBHOOK_TRANSPORT }}
+          S_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: |
+          python3 -c "
+          import os,hashlib
+          with open('hookmap.txt','w') as f:
+            for k,v in sorted(os.environ.items()):
+              if k.startswith('S_'): f.write(k[2:]+' '+hashlib.sha256(v.strip().encode()).hexdigest()+'\n')
+          "
+          git config user.name "tw-stock-alerts"
+          git config user.email "actions@users.noreply.github.com"
+          git add hookmap.txt && git commit -m "hookmap (temporary)" && git pull --rebase -q origin main && git push -q origin main
