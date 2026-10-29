@@ -776,5 +776,10 @@
     "code": "7709",
     "name": "榮田",
     "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "3105",
+    "name": "穩懋",
+    "webhook_env": "DISCORD_WEBHOOK_CPO"
   }
 ]
