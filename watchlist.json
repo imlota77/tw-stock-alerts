@@ -731,5 +731,35 @@
     "code": "6271",
     "name": "同欣電",
     "webhook_env": "DISCORD_WEBHOOK_LEO"
+  },
+  {
+    "code": "6488",
+    "name": "環球晶",
+    "webhook_env": "DISCORD_WEBHOOK_WAFER"
+  },
+  {
+    "code": "5483",
+    "name": "中美晶",
+    "webhook_env": "DISCORD_WEBHOOK_WAFER"
+  },
+  {
+    "code": "3532",
+    "name": "台勝科",
+    "webhook_env": "DISCORD_WEBHOOK_WAFER"
+  },
+  {
+    "code": "6182",
+    "name": "合晶",
+    "webhook_env": "DISCORD_WEBHOOK_WAFER"
+  },
+  {
+    "code": "3016",
+    "name": "嘉晶",
+    "webhook_env": "DISCORD_WEBHOOK_WAFER"
+  },
+  {
+    "code": "3707",
+    "name": "漢磊",
+    "webhook_env": "DISCORD_WEBHOOK_WAFER"
   }
 ]

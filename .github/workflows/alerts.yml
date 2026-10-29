@@ -80,6 +80,7 @@ jobs:
           DISCORD_WEBHOOK_MEMORY: ${{ secrets.DISCORD_WEBHOOK_MEMORY }}
           DISCORD_WEBHOOK_COOLING: ${{ secrets.DISCORD_WEBHOOK_COOLING }}
           DISCORD_WEBHOOK_LEO: ${{ secrets.DISCORD_WEBHOOK_LEO }}
+          DISCORD_WEBHOOK_WAFER: ${{ secrets.DISCORD_WEBHOOK_WAFER }}
         run: python tw_alerts.py --shard ${{ matrix.shard }}/2
 
       # 彩晶官網法說會頁：每天台灣時間 09/13/17/21 點的第一次執行才檢查（官網擋一般請求，需無頭瀏覽器）；只在第 0 批跑
