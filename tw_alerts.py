@@ -256,6 +256,8 @@ def classify(title):
         return "invite"
     if "法人說明會" in t:
         return "meeting"
+    if "注意交易資訊" in t:
+        return "attention"
     return None
 
 
@@ -395,6 +397,14 @@ def handle_item(stock, st, kind, item, first, today, today_roc):
         if first and d and (today - d).days > 200:
             return
         send(mk(code, name, "受邀參加投資活動" if kind == "invite" else "法說會公告", "meeting", desc))
+    elif kind == "attention":
+        # 達注意交易資訊標準：櫃買/證交所要求公布最近一月自結損益，內含單月 EPS
+        m = re.search(r"財務業務資訊[:：]?\s*\n(.*?)(?:\n\s*4\.|\Z)", txt, re.S)
+        body = (m.group(1).rstrip() if m else txt.strip())[:1500]
+        eps = re.search(r"每股盈餘\(元\)\s+(-?[\d\.]+)", body)
+        head = f"**列為注意股，公布自結損益**" + (f"（最近單月 EPS **{eps.group(1)} 元**）" if eps else "")
+        send(mk(code, name, "注意股公告（自結損益）", "warn",
+                prefix + head + "\n```\n" + body + "\n```\n單月數字為公司自結、未經會計師查核\n\n" + pub))
 
 
 def check_events(stock, st, today, first):
@@ -419,6 +429,11 @@ def check_events(stock, st, today, first):
         st["seen"].append(key)
         if first and latest.get(k) != key:
             continue
+        if k == "attention":
+            # 新增此類別時舊公告不在 seen 裡，只發 3 天內的，避免把歷史注意股公告整批補發
+            d = parse_roc_date(it[2])
+            if not d or (today - d).days > 3:
+                continue
         handle_item(stock, st, k, it, first, today, today_roc)
 
 
