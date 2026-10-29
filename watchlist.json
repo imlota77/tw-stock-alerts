@@ -661,5 +661,20 @@
     "code": "8996",
     "name": "高力",
     "webhook_env": "DISCORD_WEBHOOK_COOLING"
+  },
+  {
+    "code": "3265",
+    "name": "台星科",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "3374",
+    "name": "精材",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "8150",
+    "name": "南茂",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   }
 ]
