@@ -485,28 +485,8 @@
     "webhook_env": "DISCORD_WEBHOOK_CPO"
   },
   {
-    "code": "6223",
-    "name": "旺矽",
-    "webhook_env": "DISCORD_WEBHOOK_CPO"
-  },
-  {
-    "code": "6515",
-    "name": "穎崴",
-    "webhook_env": "DISCORD_WEBHOOK_CPO"
-  },
-  {
     "code": "6830",
     "name": "汎銓",
-    "webhook_env": "DISCORD_WEBHOOK_CPO"
-  },
-  {
-    "code": "7769",
-    "name": "鴻勁",
-    "webhook_env": "DISCORD_WEBHOOK_CPO"
-  },
-  {
-    "code": "2360",
-    "name": "致茂",
     "webhook_env": "DISCORD_WEBHOOK_CPO"
   },
   {
