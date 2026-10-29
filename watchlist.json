@@ -1,7 +1,8 @@
 [
   {
     "code": "6525",
-    "name": "捷敏-KY"
+    "name": "捷敏-KY",
+    "webhook_env": "DISCORD_WEBHOOK_OSAT"
   },
   {
     "code": "2449",
