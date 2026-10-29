@@ -46,7 +46,10 @@ jobs:
     permissions:
       contents: write
     steps:
+      # 排隊的 job 要拿開始執行當下最新的 main（含前一輪剛存的 state），否則會用觸發時的舊 state 重發首次載入、且 push 衝突
       - uses: actions/checkout@v4
+        with:
+          ref: main
 
       - uses: actions/setup-python@v5
         with:
@@ -110,8 +113,11 @@ jobs:
             echo "no state change"
           else
             git commit -m "state update (shard ${{ matrix.shard }})"
+            ok=0
             for i in 1 2 3 4 5; do
-              git pull --rebase -q origin main && git push -q origin main && break
+              if git pull --rebase -q origin main && git push -q origin main; then ok=1; break; fi
+              git rebase --abort 2>/dev/null || true
               sleep 3
             done
+            [ "$ok" = 1 ] || { echo "state push failed"; exit 1; }
           fi
