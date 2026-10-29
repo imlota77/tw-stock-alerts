@@ -781,5 +781,45 @@
     "code": "3105",
     "name": "穩懋",
     "webhook_env": "DISCORD_WEBHOOK_CPO"
+  },
+  {
+    "code": "2049",
+    "name": "上銀",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "1597",
+    "name": "直得",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "4540",
+    "name": "全球傳動",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "4576",
+    "name": "大銀微系統",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "4561",
+    "name": "健椿",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "2359",
+    "name": "所羅門",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "7750",
+    "name": "新代",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
+  },
+  {
+    "code": "1583",
+    "name": "程泰",
+    "webhook_env": "DISCORD_WEBHOOK_MACHINE"
   }
 ]
