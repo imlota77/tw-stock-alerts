@@ -580,5 +580,10 @@
     "code": "6412",
     "name": "群電",
     "webhook_env": "DISCORD_WEBHOOK_POWER"
+  },
+  {
+    "code": "3665",
+    "name": "貿聯-KY",
+    "webhook_env": "DISCORD_WEBHOOK_POWER"
   }
 ]
