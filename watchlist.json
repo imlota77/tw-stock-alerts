@@ -676,5 +676,35 @@
     "code": "8150",
     "name": "南茂",
     "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "2472",
+    "name": "立隆電",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "6449",
+    "name": "鈺邦",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "3357",
+    "name": "臺慶科",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "6862",
+    "name": "三集瑞-KY",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "4760",
+    "name": "勤凱",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
+  },
+  {
+    "code": "3090",
+    "name": "日電貿",
+    "webhook_env": "DISCORD_WEBHOOK_PASSIVE"
   }
 ]
