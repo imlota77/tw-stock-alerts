@@ -560,5 +560,25 @@
     "code": "3680",
     "name": "家登",
     "webhook_env": "DISCORD_WEBHOOK_OSAT"
+  },
+  {
+    "code": "2308",
+    "name": "台達電",
+    "webhook_env": "DISCORD_WEBHOOK_POWER"
+  },
+  {
+    "code": "2301",
+    "name": "光寶科",
+    "webhook_env": "DISCORD_WEBHOOK_POWER"
+  },
+  {
+    "code": "6282",
+    "name": "康舒",
+    "webhook_env": "DISCORD_WEBHOOK_POWER"
+  },
+  {
+    "code": "6412",
+    "name": "群電",
+    "webhook_env": "DISCORD_WEBHOOK_POWER"
   }
 ]
