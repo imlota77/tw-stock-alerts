@@ -601,5 +601,45 @@
     "code": "6933",
     "name": "AMAX-KY",
     "webhook_env": "DISCORD_WEBHOOK_6933"
+  },
+  {
+    "code": "2408",
+    "name": "南亞科",
+    "webhook_env": "DISCORD_WEBHOOK_MEMORY"
+  },
+  {
+    "code": "2344",
+    "name": "華邦電",
+    "webhook_env": "DISCORD_WEBHOOK_MEMORY"
+  },
+  {
+    "code": "2337",
+    "name": "旺宏",
+    "webhook_env": "DISCORD_WEBHOOK_MEMORY"
+  },
+  {
+    "code": "3006",
+    "name": "晶豪科",
+    "webhook_env": "DISCORD_WEBHOOK_MEMORY"
+  },
+  {
+    "code": "8299",
+    "name": "群聯",
+    "webhook_env": "DISCORD_WEBHOOK_MEMORY"
+  },
+  {
+    "code": "6485",
+    "name": "點序",
+    "webhook_env": "DISCORD_WEBHOOK_MEMORY"
+  },
+  {
+    "code": "3260",
+    "name": "威剛",
+    "webhook_env": "DISCORD_WEBHOOK_MEMORY"
+  },
+  {
+    "code": "4967",
+    "name": "十銓",
+    "webhook_env": "DISCORD_WEBHOOK_MEMORY"
   }
 ]
