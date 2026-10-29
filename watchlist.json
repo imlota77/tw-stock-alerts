@@ -641,5 +641,25 @@
     "code": "4967",
     "name": "十銓",
     "webhook_env": "DISCORD_WEBHOOK_MEMORY"
+  },
+  {
+    "code": "3017",
+    "name": "奇鋐",
+    "webhook_env": "DISCORD_WEBHOOK_COOLING"
+  },
+  {
+    "code": "3653",
+    "name": "健策",
+    "webhook_env": "DISCORD_WEBHOOK_COOLING"
+  },
+  {
+    "code": "3324",
+    "name": "雙鴻",
+    "webhook_env": "DISCORD_WEBHOOK_COOLING"
+  },
+  {
+    "code": "8996",
+    "name": "高力",
+    "webhook_env": "DISCORD_WEBHOOK_COOLING"
   }
 ]
