@@ -501,24 +501,35 @@ def check_materials(stock, st, today):
             m["late"] = True
             send(mk(code, name, f"{m.get('text', '法說會')}簡報尚未上傳", "warn",
                     f"**{d.isoformat()} 的{m.get('text', '法說會')}已結束，簡報/錄音還沒上傳到公開資訊觀測站**，持續追蹤，上傳後會立刻通知。"))
-        links = []
-        for lang, label in (("M", "中文"), ("E", "英文")):
-            found = None
-            for seq in ("001", "002"):
-                for ext in ("pptx", "pdf"):
-                    url = f"https://mopsov.twse.com.tw/nas/STR/{code}{d.strftime('%Y%m%d')}{lang}{seq}.{ext}"
-                    # 2026-10 起 mopsov 對 HEAD 一律回 307，改用 Range GET（存在 206、不存在 404）
-                    s, _ = http(url, headers={"Range": "bytes=0-0"}, retries=1)
-                    if s in (200, 206):
-                        found = url
+        # 檔名日期不一定是活動日（台燿 10/29、10/30 的活動簡報檔名是 10/28），往前找 3 天
+        links, urls = [], []
+        for back in range(4):
+            fd = (d - timedelta(days=back)).strftime('%Y%m%d')
+            for lang, label in (("M", "中文"), ("E", "英文")):
+                found = None
+                for seq in ("001", "002"):
+                    for ext in ("pptx", "pdf"):
+                        url = f"https://mopsov.twse.com.tw/nas/STR/{code}{fd}{lang}{seq}.{ext}"
+                        # 2026-10 起 mopsov 對 HEAD 一律回 307，改用 Range GET（存在 206、不存在 404）
+                        s, _ = http(url, headers={"Range": "bytes=0-0"}, retries=1)
+                        if s in (200, 206):
+                            found = url
+                            break
+                    if found or lang == "E":
                         break
                 if found:
-                    break
-            if found:
-                links.append(f"[{label}簡報]({found})")
+                    links.append(f"[{label}簡報]({found})")
+                    urls.append(found)
+                elif lang == "M":
+                    break  # 這個日期沒有中文簡報就換下一天
+            if links:
+                break
         if links:
             m["mat"] = True
-            send(mk(code, name, "法說會簡報已上傳", "meeting", f"**{d.isoformat()} 法說會簡報已公開**\n" + "　".join(links)))
+            sent = st.setdefault("mats", [])
+            if not set(urls) <= set(sent):  # 同一份簡報對應多場活動時只發一次
+                sent[:] = (sent + urls)[-20:]
+                send(mk(code, name, "法說會簡報已上傳", "meeting", f"**{d.isoformat()} {m.get('text', '法說會')}簡報已公開**\n" + "　".join(links)))
     st["meetings"] = [m for m in st["meetings"] if (today - date.fromisoformat(m["date"])).days <= 30]
 
 
