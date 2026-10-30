@@ -2121,19 +2121,19 @@
   "meetings": [
    {
     "date": "2026-10-29",
-    "mat": false,
+    "mat": true,
     "late": true,
     "text": "投資活動"
    },
    {
     "date": "2026-10-29",
-    "mat": false,
+    "mat": true,
     "late": true,
     "text": "投資活動"
    },
    {
     "date": "2026-10-29",
-    "mat": false,
+    "mat": true,
     "late": true,
     "text": "投資活動"
    }
@@ -2184,7 +2184,11 @@
     ]
    }
   ],
-  "init": true
+  "init": true,
+  "mats": [
+   "https://mopsov.twse.com.tw/nas/STR/238320261028M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/238320261028E001.pdf"
+  ]
  },
  "1303": {
   "seen": [
@@ -2231,13 +2235,17 @@
   "meetings": [
    {
     "date": "2026-10-23",
-    "mat": false,
+    "mat": true,
     "late": true,
     "text": "投資活動"
    }
   ],
   "reminders": [],
-  "init": true
+  "init": true,
+  "mats": [
+   "https://mopsov.twse.com.tw/nas/STR/130320261022M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/130320261022E001.pdf"
+  ]
  },
  "2880": {
   "seen": [
