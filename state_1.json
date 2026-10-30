@@ -2037,7 +2037,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "14:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
