@@ -3691,7 +3691,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "08:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    },
    {
     "date": "2026-10-29",
@@ -4325,7 +4327,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "15:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
