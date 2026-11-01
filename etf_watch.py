@@ -34,6 +34,7 @@ ETFS = [
     {"code": "00919", "name": "群益台灣精選高息", "src": "capital", "id": "195"},
     {"code": "00878", "name": "國泰永續高股息", "src": "cathay", "id": "CN"},
     {"code": "00735", "name": "國泰臺韓科技", "src": "cathay", "id": "AW"},
+    {"code": "009816", "name": "凱基台灣TOP50", "src": "kgi", "id": "J023"},
 ]
 
 
