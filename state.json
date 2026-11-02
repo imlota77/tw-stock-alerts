@@ -148,7 +148,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d1"
+    ]
    }
   ],
   "init": true
@@ -554,7 +556,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "14:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -2119,7 +2123,7 @@
    },
    {
     "date": "2026-11-03",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    }
@@ -2131,14 +2135,17 @@
     "text": "投資活動",
     "time": "10:00",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/238320261028M001.pdf",
-   "https://mopsov.twse.com.tw/nas/STR/238320261028E001.pdf"
+   "https://mopsov.twse.com.tw/nas/STR/238320261028E001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/238320261102M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/238320261102E001.pdf"
   ]
  },
  "1303": {
@@ -3688,7 +3695,8 @@
     "time": "08:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    },
    {
@@ -3799,19 +3807,7 @@
     "text": "法說會"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-10-30",
-    "kind": "meeting",
-    "text": "法說會",
-    "time": "14:00",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true
  },
  "6282": {
@@ -4316,7 +4312,8 @@
     "time": "15:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -4481,7 +4478,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "14:30",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -4934,7 +4933,8 @@
     "text": "法說會",
     "time": "16:00",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
