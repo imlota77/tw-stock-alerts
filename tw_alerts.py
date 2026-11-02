@@ -259,6 +259,9 @@ def classify(title):
         return "invite"
     if "法人說明會" in t:
         return "meeting"
+    # 簡寫：「本公司召開2026Q3英文線上法說會」（環球晶/中美晶寫法）
+    if "法說會" in t and ("召開" in t or "舉辦" in t) and not any(x in t for x in ("更正", "取消", "延期")):
+        return "meeting"
     if "注意交易資訊" in t:
         return "attention"
     return None
@@ -445,6 +448,15 @@ def check_events(stock, st, today, first):
             d = parse_roc_date(it[2])
             if not d or (today - d).days > 3:
                 continue
+        if k == "meeting" and not first:
+            # 「法說會」簡寫規則新增後，舊公告會變成沒看過：活動日已過的只記 seen 不發
+            d = parse_roc_date(it[2])
+            if not d or (today - d).days > 3:
+                txt, row = detail(it)
+                mm = re.search(r"召開法人說明會之日期[:：]\s*(\S+)", txt or "")
+                md = parse_roc_date(mm.group(1)) if mm else None
+                if not md or md < today:
+                    continue
         handle_item(stock, st, k, it, first, today, today_roc)
 
 
