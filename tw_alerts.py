@@ -407,10 +407,63 @@ def handle_item(stock, st, kind, item, first, today, today_roc):
         # 達注意交易資訊標準：櫃買/證交所要求公布最近一月自結損益，內含單月 EPS
         m = re.search(r"財務業務資訊[:：]?\s*\n(.*?)(?:\n\s*4\.|\Z)", txt, re.S)
         body = (m.group(1).rstrip() if m else txt.strip())[:1500]
-        eps = re.search(r"每股盈餘\(元\)\s+(-?[\d\.]+)", body)
-        head = f"**列為注意股，公布自結損益**" + (f"（最近單月 EPS **{eps.group(1)} 元**）" if eps else "")
-        send(mk(code, name, "注意股公告（自結損益）", "warn",
-                prefix + head + "\n```\n" + body + "\n```\n單月數字為公司自結、未經會計師查核\n\n" + pub))
+        pretty = fmt_attention(body)
+        if pretty:
+            send(mk(code, name, "注意股公告（自結損益）", "warn",
+                    prefix + "**列為注意股，公布自結損益**\n\n" + pretty + "\n\n單月數字為公司自結、未經會計師查核\n\n" + pub))
+        else:
+            eps = re.search(r"每股盈餘(?:\(元\))?\s+(\(?-?[\d\.]+\)?)", body)
+            head = f"**列為注意股，公布自結損益**" + (f"（最近單月 EPS **{eps.group(1)} 元**）" if eps else "")
+            send(mk(code, name, "注意股公告（自結損益）", "warn",
+                    prefix + head + "\n```\n" + body + "\n```\n單月數字為公司自結、未經會計師查核\n\n" + pub))
+
+
+def fmt_attention(body):
+    """把注意股自結損益的固定寬度表格改成條列；解析失敗回傳 None（改用原始表格）。"""
+    def num(s):
+        neg = s.startswith("(") or s.startswith("-")
+        v = s.strip("()-%").replace(",", "")
+        try:
+            float(v)
+        except ValueError:
+            return None
+        return ("-" if neg else "") + v
+    toks = re.findall(r"\d+年(?:\d+月|第\d季)(?:至)?", body)
+    month = next((t for t in toks if "月" in t), None)
+    qs = [t for t in toks if "季" in t]
+    start = next((t[:-1] for t in qs if t.endswith("至")), None)
+    rest = [t for t in qs if not t.endswith("至")]
+    quarter = rest[0] if rest else None
+    cum = f"{start}～{rest[-1]}" if start and len(rest) >= 2 else None
+    um = re.search(r"\((百萬|千元|仟元|億)\)", body)
+    unit = um.group(1) if um else "百萬"
+    labels = [("營業收入", "營收", True), ("稅前淨利", "稅前淨利", True),
+              (r"業主淨利|本期淨利|稅後淨利", "歸屬母公司淨利", True), ("每股盈餘", "EPS", False)]
+    lines = body.splitlines()
+    rows = []
+    for pat, show, money in labels:
+        for ln in lines:
+            if re.search(pat, ln):
+                vals = re.findall(r"\(?-?[\d,]+(?:\.\d+)?%?\)?", re.sub(pat, "", ln))
+                vals = [v for v in vals if num(v) is not None]
+                if len(vals) >= 5:
+                    rows.append((show, money, vals[:5]))
+                    break
+    if len(rows) < 2 or not month:
+        return None
+    def yoy(v):
+        n = num(v)
+        return f"{'+' if not n.startswith('-') else ''}{n}%"
+    def amt(v, money):
+        n = num(v)
+        return f"{n} {unit}" if money else f"{n} 元"
+    out = [f"**📅 單月 {month}（自結）**"]
+    out += [f"• {s}：**{amt(v[0], m)}**（較去年同期 {yoy(v[1])}）" for s, m, v in rows]
+    out.append(f"\n**📊 單季 {quarter or '最近一季'}（核閱）**")
+    out += [f"• {s}：{amt(v[2], m)}（較去年同期 {yoy(v[3])}）" for s, m, v in rows]
+    out.append(f"\n**🗂 近四季累計 {cum or ''}（查核）**")
+    out += [f"• {s}：{amt(v[4], m)}" for s, m, v in rows]
+    return "\n".join(out)
 
 
 def check_events(stock, st, today, first):
