@@ -2497,7 +2497,8 @@
     "time": "15:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -3238,7 +3239,7 @@
   "meetings": [
    {
     "date": "2026-11-04",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    }
@@ -3250,11 +3251,16 @@
     "text": "投資活動",
     "time": "14:30",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
-  "init": true
+  "init": true,
+  "mats": [
+   "https://mopsov.twse.com.tw/nas/STR/247220261103M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/247220261103E001.pdf"
+  ]
  },
  "3357": {
   "seen": [
