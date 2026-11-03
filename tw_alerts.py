@@ -631,6 +631,20 @@ def main():
     if "--date" in sys.argv:
         today = date.fromisoformat(sys.argv[sys.argv.index("--date") + 1])
     global CUR_HOOK
+    if "--resend-attention" in sys.argv:
+        # 手動預覽：重發某檔最新一則注意股公告到它的頻道，不動 state
+        code = sys.argv[sys.argv.index("--resend-attention") + 1].strip()
+        stock = next(s for s in wl if s["code"] == code)
+        envs = stock.get("webhook_envs") or ([stock["webhook_env"]] if stock.get("webhook_env") else [])
+        CUR_HOOK = [os.environ[e] for e in envs if os.environ.get(e)]
+        today_roc = roc(today)
+        items = mops_list(code, today_roc - 1) + mops_list(code, today_roc)
+        items = sorted([it for it in items if classify(it[4]) == "attention"], key=lambda it: (it[2], it[3]))
+        if items:
+            handle_item(stock, {"seen": [], "rev": [], "reports": [], "warned": [], "meetings": [], "reminders": []},
+                        "attention", items[-1], False, today, today_roc)
+        print("resent" if items else "no attention item", code)
+        return
     for stock in wl:
         code = stock["code"]
         if not in_shard(code):

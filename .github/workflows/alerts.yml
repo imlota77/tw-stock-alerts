@@ -7,6 +7,10 @@ on:
         description: 'set to 1 to run the HannStar (6116) site check regardless of time'
         required: false
         default: '0'
+      resend_attention:
+        description: 'stock code: resend its latest 注意股 announcement (preview only, no other checks)'
+        required: false
+        default: ''
   schedule:
     # UTC。台灣時間 = UTC+8。08:00~13:00 每小時一次；16:00~22:00 每 30 分鐘一次
     - cron: '0 0-5 * * *'
@@ -82,7 +86,13 @@ jobs:
           DISCORD_WEBHOOK_LEO: ${{ secrets.DISCORD_WEBHOOK_LEO }}
           DISCORD_WEBHOOK_WAFER: ${{ secrets.DISCORD_WEBHOOK_WAFER }}
           DISCORD_WEBHOOK_MACHINE: ${{ secrets.DISCORD_WEBHOOK_MACHINE }}
-        run: python tw_alerts.py --shard ${{ matrix.shard }}/2
+          RESEND_ATTENTION: ${{ github.event.inputs.resend_attention }}
+        run: |
+          if [ -n "$RESEND_ATTENTION" ]; then
+            if [ "${{ matrix.shard }}" = "0" ]; then python tw_alerts.py --resend-attention "$RESEND_ATTENTION"; fi
+          else
+            python tw_alerts.py --shard ${{ matrix.shard }}/2
+          fi
 
       # 彩晶官網法說會頁：每天台灣時間 09/13/17/21 點的第一次執行才檢查（官網擋一般請求，需無頭瀏覽器）；只在第 0 批跑
       - name: Gate HannStar check
