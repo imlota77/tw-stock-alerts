@@ -565,7 +565,8 @@
     "text": "法說會",
     "time": "14:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -1845,7 +1846,8 @@
     "text": "法說會",
     "time": "14:30",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -2538,7 +2540,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "14:30",
-    "done": []
+    "done": [
+     "d1"
+    ]
    }
   ],
   "init": true
@@ -4640,7 +4644,8 @@
     "text": "投資活動",
     "time": "14:30",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -5017,7 +5022,7 @@
   "meetings": [
    {
     "date": "2026-11-05",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "法說會"
    }
@@ -5029,11 +5034,16 @@
     "text": "法說會",
     "time": "14:00",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
-  "init": true
+  "init": true,
+  "mats": [
+   "https://mopsov.twse.com.tw/nas/STR/628520261104M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/628520261104E001.pdf"
+  ]
  },
  "3042": {
   "seen": [
@@ -5412,7 +5422,7 @@
   "meetings": [
    {
     "date": "2026-11-05",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    },
@@ -5437,7 +5447,8 @@
     "time": "10:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    },
    {
@@ -5455,7 +5466,11 @@
     "done": []
    }
   ],
-  "init": true
+  "init": true,
+  "mats": [
+   "https://mopsov.twse.com.tw/nas/STR/310520261102M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/310520261102E001.pdf"
+  ]
  },
  "2049": {
   "seen": [
