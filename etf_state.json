@@ -1878,7 +1878,7 @@
   }
  },
  "00990A": {
-  "date": "2026-11-02",
+  "date": "2026-11-03",
   "hold": {
    "MSFT US": [
     "MICROSOFT CORP",
@@ -1908,14 +1908,6 @@
     "SPACE EXPLORATION TECHN-CL A",
     256528
    ],
-   "LITE US": [
-    "LUMENTUM HOLDINGS INC",
-    50079
-   ],
-   "SHOP US": [
-    "SHOPIFY INC - CLASS A",
-    204100
-   ],
    "MU US": [
     "MICRON TECHNOLOGY INC",
     38005
@@ -1924,117 +1916,121 @@
     "SNOWFLAKE INC",
     101200
    ],
+   "AMZN US": [
+    "AMAZON.COM INC",
+    117140
+   ],
+   "SHOP US": [
+    "SHOPIFY INC - CLASS A",
+    204100
+   ],
    "2330": [
     "台積電",
     406000
+   ],
+   "GOOGL US": [
+    "ALPHABET INC-CL A",
+    99480
+   ],
+   "LLY US": [
+    "ELI LILLY & CO",
+    16160
    ],
    "ZS US": [
     "ZSCALER INC",
     98300
    ],
-   "DDOG US": [
-    "DATADOG INC - CLASS A",
-    98000
+   "6098 JP": [
+    "RECRUIT HOLDINGS CO LTD",
+    174100
    ],
-   "3037": [
-    "欣興",
-    667000
+   "GE US": [
+    "GENERAL ELECTRIC",
+    61800
    ],
    "2454": [
     "聯發科",
     165000
    ],
-   "LLY US": [
-    "ELI LILLY & CO",
-    14200
-   ],
-   "6098 JP": [
-    "RECRUIT HOLDINGS CO LTD",
-    174100
-   ],
-   "AMZN US": [
-    "AMAZON.COM INC",
-    79500
-   ],
-   "NET US": [
-    "CLOUDFLARE INC - CLASS A",
-    73500
-   ],
-   "2383": [
-    "台光電",
-    134000
+   "3037": [
+    "欣興",
+    667000
    ],
    "CRWD US": [
     "CROWDSTRIKE HOLDINGS INC - A",
     74263
    ],
-   "RBRK US": [
-    "RUBRIK INC-A",
-    140800
-   ],
-   "OKTA US": [
-    "OKTA INC",
-    82600
+   "2383": [
+    "台光電",
+    134000
    ],
    "TSLA US": [
     "TESLA INC",
-    37640
+    44480
+   ],
+   "LITE US": [
+    "LUMENTUM HOLDINGS INC",
+    23079
+   ],
+   "NET US": [
+    "CLOUDFLARE INC - CLASS A",
+    56060
+   ],
+   "HWM US": [
+    "HOWMET AEROSPACE INC",
+    65100
+   ],
+   "AVGO US": [
+    "BROADCOM INC",
+    43040
    ],
    "3017": [
     "奇鋐",
     158000
    ],
-   "TWST US": [
-    "TWIST BIOSCIENCE CORP",
-    103936
-   ],
-   "SMTC US": [
-    "SEMTECH CORP",
-    108300
+   "DDOG US": [
+    "DATADOG INC - CLASS A",
+    55200
    ],
    "2368": [
     "金像電",
     368000
    ],
-   "GE US": [
-    "GENERAL ELECTRIC",
-    32520
-   ],
    "GH US": [
     "GUARDANT HEALTH INC",
     59300
-   ],
-   "3443": [
-    "創意",
-    44000
-   ],
-   "AAPL US": [
-    "APPLE INC",
-    29200
    ],
    "NOW US": [
     "SERVICENOW INC",
     89981
    ],
-   "CLS US": [
-    "CELESTICA INC",
-    37680
+   "AAPL US": [
+    "APPLE INC",
+    29200
    ],
-   "2308": [
-    "台達電",
-    176000
-   ],
-   "8046": [
-    "南電",
-    201000
+   "3443": [
+    "創意",
+    44000
    ],
    "SEI US": [
     "SOLARIS ENERGY INFRASTRUCTUR",
     109400
    ],
+   "TWST US": [
+    "TWIST BIOSCIENCE CORP",
+    53836
+   ],
    "RPRX US": [
     "ROYALTY PHARMA PLC- CL A",
     92700
+   ],
+   "8046": [
+    "南電",
+    141000
+   ],
+   "2308": [
+    "台達電",
+    106000
    ]
   }
  },
