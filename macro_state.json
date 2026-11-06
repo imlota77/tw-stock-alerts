@@ -20,8 +20,8 @@
  ],
  "bls_calls": {
   "day": "2026-11-06",
-  "n": 15,
-  "last": 1793971842.989606
+  "n": 16,
+  "last": 1793972122.676135
  },
  "cpi": [
   2026,
@@ -34,10 +34,10 @@
  "jobs": {
   "period": [
    2026,
-   9
+   10
   ],
-  "chg": 29.0,
-  "chg1_reported": 133.0
+  "chg": 165.0,
+  "chg1_reported": 60.0
  },
  "tx": {
   "2026-10-21|week": true,
@@ -45,9 +45,7 @@
   "2026-10-21|day": true,
   "2026-10-21|res": true
  },
- "last_errors": {
-  "bls": "<HTTPError 503: 'Service Unavailable'>"
- },
+ "last_errors": {},
  "pce": [
   2026,
   9
