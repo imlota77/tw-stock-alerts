@@ -34,7 +34,9 @@
    "11510"
   ],
   "reports": [],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -121,7 +123,9 @@
    "115Q1",
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-11",
@@ -306,7 +310,9 @@
    "114Q4",
    "115Q1"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-10-15",
@@ -368,7 +374,9 @@
    "115Q1",
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -461,7 +469,9 @@
    "114Q4",
    "115Q1"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-23",
@@ -517,7 +527,9 @@
    "115Q1",
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -600,7 +612,9 @@
    "115Q1",
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -675,7 +689,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -706,7 +722,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -744,7 +762,9 @@
    "11509"
   ],
   "reports": [],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-23",
@@ -801,7 +821,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-12",
@@ -849,7 +871,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -964,7 +988,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-12",
@@ -1018,7 +1044,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -1075,7 +1103,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -1221,7 +1251,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-13",
@@ -1368,7 +1400,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -1402,7 +1436,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-27",
@@ -1496,7 +1532,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -1570,7 +1608,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -1726,7 +1766,9 @@
    "11510"
   ],
   "reports": [],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -1835,7 +1877,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-12",
@@ -2057,7 +2101,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -2087,7 +2133,9 @@
    "11509"
   ],
   "reports": [],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -2120,7 +2168,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -2192,20 +2242,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-03",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "14:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/499120261103M001.pdf",
@@ -2262,7 +2299,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -2410,7 +2449,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    },
    {
     "date": "2026-11-12",
@@ -2550,7 +2591,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -2726,7 +2769,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -2853,7 +2898,9 @@
    "115Q1",
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -2890,7 +2937,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3146,7 +3195,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-10",
@@ -3161,7 +3212,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "16:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -3196,7 +3249,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3258,7 +3313,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3339,7 +3396,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3445,7 +3504,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3501,7 +3562,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "14:30",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -3538,7 +3601,9 @@
    "11510"
   ],
   "reports": [],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3582,7 +3647,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3677,7 +3744,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3845,7 +3914,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-11",
@@ -3891,7 +3962,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [],
   "reminders": [],
   "init": true
@@ -3930,7 +4003,9 @@
   "reports": [
    "115Q2"
   ],
-  "warned": [],
+  "warned": [
+   "dl115Q3_7"
+  ],
   "meetings": [
    {
     "date": "2026-11-13",
