@@ -20,8 +20,8 @@
  ],
  "bls_calls": {
   "day": "2026-11-06",
-  "n": 12,
-  "last": 1793970627.245221
+  "n": 13,
+  "last": 1793971228.692459
  },
  "cpi": [
   2026,
@@ -45,7 +45,9 @@
   "2026-10-21|day": true,
   "2026-10-21|res": true
  },
- "last_errors": {},
+ "last_errors": {
+  "bls": "TypeError('cannot unpack non-iterable NoneType object')"
+ },
  "pce": [
   2026,
   9
