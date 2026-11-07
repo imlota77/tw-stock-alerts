@@ -140,7 +140,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "14:30",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -1684,7 +1686,8 @@
     "text": "投資活動",
     "time": "14:30",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -2652,20 +2655,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-04",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "15:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/641220261104M001.pdf",
@@ -3451,19 +3441,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-04",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "14:30",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/247220261103M001.pdf",
@@ -3931,7 +3909,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "16:30",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
