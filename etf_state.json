@@ -1870,19 +1870,19 @@
   }
  },
  "00990A": {
-  "date": "2026-11-06",
+  "date": "2026-11-09",
   "hold": {
    "MSFT US": [
     "MICROSOFT CORP",
     126080
    ],
-   "NVDA US": [
-    "NVIDIA CORP",
-    280800
-   ],
    "AMD US": [
     "ADVANCED MICRO DEVICES",
     100699
+   ],
+   "NVDA US": [
+    "NVIDIA CORP",
+    280800
    ],
    "BE US": [
     "BLOOM ENERGY CORP- A",
@@ -1916,37 +1916,37 @@
     "SPACE EXPLORATION TECHN-CL A",
     188528
    ],
-   "GE US": [
-    "GENERAL ELECTRIC",
-    75800
-   ],
    "CRWD US": [
     "CROWDSTRIKE HOLDINGS INC - A",
     112463
+   ],
+   "GE US": [
+    "GENERAL ELECTRIC",
+    75800
    ],
    "LLY US": [
     "ELI LILLY & CO",
     16160
    ],
-   "ZS US": [
-    "ZSCALER INC",
-    98300
+   "3443": [
+    "創意",
+    109000
    ],
    "SNOW US": [
     "SNOWFLAKE INC",
     69400
    ],
-   "AAPL US": [
-    "APPLE INC",
-    55640
+   "ZS US": [
+    "ZSCALER INC",
+    98300
    ],
    "6098 JP": [
     "RECRUIT HOLDINGS CO LTD",
     174100
    ],
-   "MU US": [
-    "MICRON TECHNOLOGY INC",
-    26385
+   "AAPL US": [
+    "APPLE INC",
+    55640
    ],
    "2454": [
     "聯發科",
@@ -1960,6 +1960,10 @@
     "CLOUDFLARE INC - CLASS A",
     56060
    ],
+   "MU US": [
+    "MICRON TECHNOLOGY INC",
+    22425
+   ],
    "3037": [
     "欣興",
     667000
@@ -1972,49 +1976,41 @@
     "BROADCOM INC",
     43040
    ],
-   "TSLA US": [
-    "TESLA INC",
-    32480
-   ],
    "3017": [
     "奇鋐",
     158000
    ],
-   "DDOG US": [
-    "DATADOG INC - CLASS A",
-    55200
-   ],
-   "RPRX US": [
-    "ROYALTY PHARMA PLC- CL A",
-    147400
-   ],
-   "AEM US": [
-    "AGNICO EAGLE MINES LTD",
-    50400
+   "TSLA US": [
+    "TESLA INC",
+    32480
    ],
    "ANET US": [
     "ARISTA NETWORKS INC",
     55000
    ],
+   "AEM US": [
+    "AGNICO EAGLE MINES LTD",
+    50400
+   ],
+   "RPRX US": [
+    "ROYALTY PHARMA PLC- CL A",
+    147400
+   ],
    "2368": [
     "金像電",
     368000
    ],
-   "3443": [
-    "創意",
-    44000
+   "DDOG US": [
+    "DATADOG INC - CLASS A",
+    40500
    ],
-   "TWST US": [
-    "TWIST BIOSCIENCE CORP",
-    53836
+   "8046": [
+    "南電",
+    170000
    ],
    "THC US": [
     "TENET HEALTHCARE CORP",
     15800
-   ],
-   "8046": [
-    "南電",
-    141000
    ],
    "9602 JP": [
     "TOHO CO LTD",
