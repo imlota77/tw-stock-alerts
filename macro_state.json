@@ -46,7 +46,9 @@
   "2026-10-21|res": true,
   "2026-11-18|week": true
  },
- "last_errors": {},
+ "last_errors": {
+  "pce": "TimeoutError('The read operation timed out')"
+ },
  "pce": [
   2026,
   9
