@@ -35,23 +35,11 @@ jobs:
           DISCORD_WEBHOOK_MARKET: ${{ secrets.DISCORD_WEBHOOK_MARKET }}
         run: python market_report.py
 
-      - name: Install chart deps
-        continue-on-error: true
-        run: |
-          sudo apt-get install -y -q fonts-noto-cjk > /dev/null
-          pip install -q matplotlib
-
-      - name: Margin gap chart (大盤跌幅 vs 融資退幅)
-        continue-on-error: true
-        env:
-          DISCORD_WEBHOOK_MARKET: ${{ secrets.DISCORD_WEBHOOK_MARKET }}
-        run: python margin_gap.py
-
       - name: Commit updated state
         run: |
           git config user.name "tw-stock-alerts"
           git config user.email "actions@users.noreply.github.com"
-          git add market_state.json margin_gap_state.json
+          git add market_state.json
           if git diff --cached --quiet; then
             echo "no state change"
           else
