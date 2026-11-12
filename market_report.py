@@ -14,10 +14,19 @@ FORCE = "--force" in sys.argv
 UA = {"User-Agent": "Mozilla/5.0"}
 
 
-def get_json(url):
-    req = urllib.request.Request(url, headers=UA)
-    with urllib.request.urlopen(req, timeout=40) as r:
-        return json.loads(r.read().decode("utf-8"))
+def get_json(url, tries=4):
+    # 證交所偶爾對雲端 IP 回 307/5xx（2026-11-12 run 失敗），重試幾次
+    import time
+    for i in range(tries):
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            with urllib.request.urlopen(req, timeout=40) as r:
+                return json.loads(r.read().decode("utf-8"))
+        except Exception as e:
+            if i == tries - 1:
+                raise
+            print(f"get_json retry {i + 1}: {e}", file=sys.stderr)
+            time.sleep(20 * (i + 1))
 
 
 def n(s):
