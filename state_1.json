@@ -357,7 +357,7 @@
    {
     "date": "2026-11-16",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    },
    {
@@ -386,7 +386,8 @@
     "text": "投資活動",
     "time": "08:30",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -485,19 +486,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-13",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "14:00",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/611620261113M001.pdf",
@@ -1013,19 +1002,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-13",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "16:30",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/237620261112M001.pdf",
@@ -1302,7 +1279,8 @@
     "time": "09:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    },
    {
@@ -1427,7 +1405,7 @@
    {
     "date": "2026-11-16",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    },
    {
@@ -1438,18 +1416,6 @@
    }
   ],
   "reminders": [
-   {
-    "date": "2026-11-13",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "10:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
    {
     "date": "2026-11-16",
     "kind": "meeting",
@@ -1533,20 +1499,7 @@
     "text": "法說會"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-13",
-    "kind": "meeting",
-    "text": "法說會",
-    "time": "14:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/667220261112M001.pdf",
@@ -1935,7 +1888,8 @@
     "text": "投資活動",
     "time": "08:30",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -2124,7 +2078,7 @@
    {
     "date": "2026-11-16",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    }
   ],
@@ -2858,7 +2812,7 @@
    {
     "date": "2026-11-16",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    },
    {
@@ -2893,7 +2847,8 @@
     "text": "投資活動",
     "time": "09:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    },
    {
@@ -3219,7 +3174,7 @@
    {
     "date": "2026-11-16",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    }
   ],
@@ -3301,23 +3256,11 @@
    {
     "date": "2026-11-16",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    }
   ],
   "reminders": [
-   {
-    "date": "2026-11-13",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
    {
     "date": "2026-11-16",
     "kind": "meeting",
@@ -3520,7 +3463,7 @@
    {
     "date": "2026-11-16",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    }
   ],
@@ -3629,7 +3572,7 @@
    {
     "date": "2026-11-16",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    },
    {
@@ -3795,7 +3738,8 @@
     "text": "投資活動",
     "time": "12:30",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    },
    {
@@ -3926,19 +3870,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-13",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "16:10",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/899620261113M001.pdf",
@@ -4137,19 +4069,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-13",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "15:10",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/335720261112M001.pdf",
@@ -4684,20 +4604,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-13",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "14:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/775020261113M001.pdf",
