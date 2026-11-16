@@ -5502,7 +5502,8 @@
    "115/09/18|15:11:14|本公司召開線上法人說明會",
    "115/10/12|16:43:01|公告本公司今日法人說明會摘要",
    "115/11/04|14:43:54|本公司115年第3季合併財務報告業經董事會決議通過",
-   "115/11/11|13:32:38|本公司受邀參加Daiwa Investment Confer"
+   "115/11/11|13:32:38|本公司受邀參加Daiwa Investment Confer",
+   "115/11/16|13:39:02|本公司受邀參加Macquarie Taiwan Confer"
   ],
   "rev": [
    "11508",
@@ -5520,9 +5521,25 @@
     "mat": true,
     "late": false,
     "text": "投資活動"
+   },
+   {
+    "date": "2026-11-17",
+    "mat": false,
+    "late": false,
+    "text": "投資活動"
    }
   ],
-  "reminders": [],
+  "reminders": [
+   {
+    "date": "2026-11-17",
+    "kind": "meeting",
+    "text": "投資活動",
+    "time": "09:00",
+    "done": [
+     "d1"
+    ]
+   }
+  ],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/240820261111M001.pdf",
