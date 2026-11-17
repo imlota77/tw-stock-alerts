@@ -2470,7 +2470,7 @@
    },
    {
     "date": "2026-11-17",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    }
@@ -2491,7 +2491,9 @@
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/316720261111M001.pdf",
-   "https://mopsov.twse.com.tw/nas/STR/316720261111E001.pdf"
+   "https://mopsov.twse.com.tw/nas/STR/316720261111E001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/316720261117M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/316720261117E001.pdf"
   ]
  },
  "2383": {
