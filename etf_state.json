@@ -1862,12 +1862,8 @@
   }
  },
  "00990A": {
-  "date": "2026-11-13",
+  "date": "2026-11-16",
   "hold": {
-   "AMD US": [
-    "ADVANCED MICRO DEVICES",
-    100699
-   ],
    "MSFT US": [
     "MICROSOFT CORP",
     100680
@@ -1896,109 +1892,109 @@
     "台積電",
     518000
    ],
+   "AMD US": [
+    "ADVANCED MICRO DEVICES",
+    66939
+   ],
    "AVGO US": [
     "BROADCOM INC",
     97480
-   ],
-   "CRWD US": [
-    "CROWDSTRIKE HOLDINGS INC - A",
-    132263
    ],
    "SHOP US": [
     "SHOPIFY INC - CLASS A",
     204100
    ],
-   "3443": [
-    "創意",
-    109000
+   "CRWD US": [
+    "CROWDSTRIKE HOLDINGS INC - A",
+    132263
    ],
    "LLY US": [
     "ELI LILLY & CO",
     19380
    ],
+   "3443": [
+    "創意",
+    109000
+   ],
    "GE US": [
     "GENERAL ELECTRIC",
     75800
-   ],
-   "ANET US": [
-    "ARISTA NETWORKS INC",
-    125800
    ],
    "SNOW US": [
     "SNOWFLAKE INC",
     84880
    ],
-   "2454": [
-    "聯發科",
-    193000
-   ],
-   "NET US": [
-    "CLOUDFLARE INC - CLASS A",
-    79260
+   "ANET US": [
+    "ARISTA NETWORKS INC",
+    125800
    ],
    "6098 JP": [
     "RECRUIT HOLDINGS CO LTD",
     215200
    ],
-   "3017": [
-    "奇鋐",
-    190000
+   "NET US": [
+    "CLOUDFLARE INC - CLASS A",
+    79260
    ],
-   "MU US": [
-    "MICRON TECHNOLOGY INC",
-    22425
+   "2454": [
+    "聯發科",
+    193000
    ],
-   "2383": [
-    "台光電",
-    134000
+   "APP US": [
+    "APPLOVIN CORP-CLASS A",
+    39600
    ],
    "FROG US": [
     "JFROG LTD",
     148008
    ],
-   "3037": [
-    "欣興",
-    667000
+   "3017": [
+    "奇鋐",
+    190000
    ],
    "ZS US": [
     "ZSCALER INC",
     76600
    ],
+   "2383": [
+    "台光電",
+    125000
+   ],
+   "3037": [
+    "欣興",
+    667000
+   ],
    "HWM US": [
     "HOWMET AEROSPACE INC",
     65100
-   ],
-   "2368": [
-    "金像電",
-    442000
    ],
    "PANW US": [
     "PALO ALTO NETWORKS INC",
     42320
    ],
+   "2368": [
+    "金像電",
+    442000
+   ],
    "NVDA US": [
     "NVIDIA CORP",
     67400
-   ],
-   "2308": [
-    "台達電",
-    240000
    ],
    "CLS US": [
     "CELESTICA INC",
     35840
    ],
-   "APP US": [
-    "APPLOVIN CORP-CLASS A",
-    17560
+   "2308": [
+    "台達電",
+    240000
+   ],
+   "MU US": [
+    "MICRON TECHNOLOGY INC",
+    10825
    ],
    "8046": [
     "南電",
     170000
-   ],
-   "HPE US": [
-    "HEWLETT PACKARD ENTERPRISE",
-    94200
    ],
    "9602 JP": [
     "TOHO CO LTD",
