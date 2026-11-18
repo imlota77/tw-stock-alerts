@@ -20,9 +20,9 @@
   "https://www.federalreserve.gov/newsevents/pressreleases/monetary20261112a.htm"
  ],
  "bls_calls": {
-  "day": "2026-11-17",
-  "n": 27,
-  "last": 1794930326.786285
+  "day": "2026-11-18",
+  "n": 1,
+  "last": 1794960054.861908
  },
  "cpi": [
   2026,
@@ -47,7 +47,8 @@
   "2026-10-21|res": true,
   "2026-11-18|week": true,
   "2026-11-18|d3": true,
-  "2026-11-18|eve": true
+  "2026-11-18|eve": true,
+  "2026-11-18|day": true
  },
  "last_errors": {},
  "pce": [
