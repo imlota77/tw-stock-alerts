@@ -363,7 +363,7 @@
    {
     "date": "2026-11-18",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    }
   ],
@@ -1597,7 +1597,7 @@
   "meetings": [
    {
     "date": "2026-11-19",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    },
@@ -1627,7 +1627,8 @@
     "text": "投資活動",
     "time": "13:50",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    },
    {
@@ -1636,7 +1637,8 @@
     "text": "投資活動",
     "time": "11:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    },
    {
@@ -1654,7 +1656,11 @@
     "done": []
    }
   ],
-  "init": true
+  "init": true,
+  "mats": [
+   "https://mopsov.twse.com.tw/nas/STR/621320261117M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/621320261117E001.pdf"
+  ]
  },
  "1815": {
   "seen": [
@@ -2971,7 +2977,7 @@
    {
     "date": "2026-11-18",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    },
    {
@@ -3336,7 +3342,7 @@
    {
     "date": "2026-11-18",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    }
   ],
@@ -3894,7 +3900,7 @@
    {
     "date": "2026-11-18",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    },
    {
@@ -4262,7 +4268,7 @@
    },
    {
     "date": "2026-11-19",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    }
@@ -4274,14 +4280,17 @@
     "text": "投資活動",
     "time": "13:50",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/335720261112M001.pdf",
-   "https://mopsov.twse.com.tw/nas/STR/335720261112E001.pdf"
+   "https://mopsov.twse.com.tw/nas/STR/335720261112E001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/335720261118M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/335720261118E001.pdf"
   ]
  },
  "3090": {
