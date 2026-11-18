@@ -21,8 +21,8 @@
  ],
  "bls_calls": {
   "day": "2026-11-18",
-  "n": 23,
-  "last": 1795012236.813133
+  "n": 24,
+  "last": 1795013128.69893
  },
  "cpi": [
   2026,
@@ -51,9 +51,7 @@
   "2026-11-18|day": true,
   "2026-11-18|res": true
  },
- "last_errors": {
-  "pce": "URLError(gaierror(-3, 'Temporary failure in name resolution'))"
- },
+ "last_errors": {},
  "pce": [
   2026,
   9
