@@ -183,7 +183,7 @@
    {
     "date": "2026-11-19",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    },
    {
@@ -194,18 +194,6 @@
    }
   ],
   "reminders": [
-   {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
    {
     "date": "2026-11-19",
     "kind": "meeting",
@@ -543,18 +531,6 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "法說會",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-18",
     "kind": "meeting",
     "text": "法說會",
@@ -571,7 +547,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -2446,7 +2424,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    },
    {
     "date": "2026-11-24",
@@ -2575,7 +2555,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true,
@@ -4087,7 +4069,8 @@
     "text": "投資活動",
     "time": "14:50",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -4238,30 +4221,6 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "14:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-17",
     "kind": "meeting",
     "text": "投資活動",
@@ -4278,7 +4237,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "10:30",
-    "done": []
+    "done": [
+     "d3"
+    ]
    },
    {
     "date": "2026-11-24",
@@ -4357,18 +4318,6 @@
    }
   ],
   "reminders": [
-   {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
    {
     "date": "2026-11-18",
     "kind": "meeting",
@@ -5381,7 +5330,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -5474,18 +5425,6 @@
    }
   ],
   "reminders": [
-   {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
    {
     "date": "2026-11-18",
     "kind": "meeting",
@@ -6143,22 +6082,13 @@
     ]
    },
    {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-23",
     "kind": "meeting",
     "text": "投資活動",
     "time": "10:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    },
    {
     "date": "2026-11-20",
@@ -6166,7 +6096,8 @@
     "text": "投資活動",
     "time": "15:20",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -6359,7 +6290,8 @@
     "text": "投資活動",
     "time": "13:20",
     "done": [
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -6692,20 +6624,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "14:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/618220261116M001.pdf",
@@ -6902,20 +6821,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-16",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "14:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/310520261102M001.pdf",
