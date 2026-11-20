@@ -211,7 +211,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "14:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true,
@@ -944,7 +946,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "11:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -1951,20 +1955,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true
  },
  "2345": {
@@ -2398,18 +2389,6 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-18",
     "kind": "meeting",
     "text": "投資活動",
@@ -2435,7 +2414,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    },
    {
     "date": "2026-12-02",
@@ -2540,18 +2521,6 @@
    }
   ],
   "reminders": [
-   {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "10:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
    {
     "date": "2026-11-23",
     "kind": "meeting",
@@ -2715,19 +2684,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "11:00",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/238320261028M001.pdf",
@@ -2975,18 +2932,6 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "法說會",
-    "time": "15:30",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-18",
     "kind": "meeting",
     "text": "投資活動",
@@ -3062,7 +3007,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "14:30",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -3450,17 +3397,6 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-23",
     "kind": "meeting",
     "text": "投資活動",
@@ -3613,14 +3549,18 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    },
    {
     "date": "2026-11-24",
     "kind": "meeting",
     "text": "投資活動",
     "time": "15:30",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -4293,18 +4233,6 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "10:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-23",
     "kind": "meeting",
     "text": "投資活動",
@@ -4318,7 +4246,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "10:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true,
@@ -4563,18 +4493,6 @@
    }
   ],
   "reminders": [
-   {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "13:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
    {
     "date": "2026-11-25",
     "kind": "meeting",
@@ -5032,18 +4950,6 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-18",
     "kind": "meeting",
     "text": "投資活動",
@@ -5060,7 +4966,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "09:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    },
    {
     "date": "2026-12-01",
@@ -5789,17 +5697,6 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-17",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "09:00",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-23",
     "kind": "meeting",
     "text": "投資活動",
@@ -6182,7 +6079,7 @@
    {
     "date": "2026-11-20",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    }
   ],
@@ -6398,7 +6295,7 @@
    {
     "date": "2026-11-20",
     "mat": false,
-    "late": false,
+    "late": true,
     "text": "投資活動"
    }
   ],
@@ -6873,7 +6770,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "14:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
