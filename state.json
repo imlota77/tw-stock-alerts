@@ -195,24 +195,13 @@
   ],
   "reminders": [
    {
-    "date": "2026-11-19",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "15:00",
-    "done": [
-     "d3",
-     "d1",
-     "d0",
-     "soon"
-    ]
-   },
-   {
     "date": "2026-11-24",
     "kind": "meeting",
     "text": "投資活動",
     "time": "14:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -539,7 +528,8 @@
     "time": "09:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -924,7 +914,8 @@
     "text": "投資活動",
     "time": "11:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -2240,7 +2231,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "14:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -2350,7 +2343,8 @@
     "time": "09:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    },
    {
@@ -2359,7 +2353,8 @@
     "text": "投資活動",
     "time": "09:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    },
    {
@@ -2472,7 +2467,8 @@
     "time": "09:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -2691,12 +2687,6 @@
   ],
   "meetings": [
    {
-    "date": "2026-10-23",
-    "mat": true,
-    "late": true,
-    "text": "投資活動"
-   },
-   {
     "date": "2026-11-09",
     "mat": true,
     "late": false,
@@ -2709,19 +2699,7 @@
     "text": "投資活動"
    }
   ],
-  "reminders": [
-   {
-    "date": "2026-11-19",
-    "kind": "meeting",
-    "text": "投資活動",
-    "time": "10:50",
-    "done": [
-     "d1",
-     "d0",
-     "soon"
-    ]
-   }
-  ],
+  "reminders": [],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/130320261022M001.pdf",
@@ -2786,7 +2764,9 @@
     "kind": "meeting",
     "text": "法說會",
     "time": "15:00",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -2940,7 +2920,8 @@
     "text": "法說會",
     "time": "14:30",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -3322,7 +3303,7 @@
    },
    {
     "date": "2026-11-23",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    }
@@ -3335,14 +3316,17 @@
     "time": "09:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/304420261116M001.pdf",
-   "https://mopsov.twse.com.tw/nas/STR/304420261116E001.pdf"
+   "https://mopsov.twse.com.tw/nas/STR/304420261116E001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/304420261120M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/304420261120E001.pdf"
   ]
  },
  "8046": {
@@ -3483,7 +3467,8 @@
     "text": "投資活動",
     "time": "09:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    },
    {
@@ -3492,7 +3477,8 @@
     "text": "投資活動",
     "time": "15:30",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
@@ -3900,7 +3886,9 @@
     "kind": "meeting",
     "text": "投資活動",
     "time": "15:15",
-    "done": []
+    "done": [
+     "d3"
+    ]
    }
   ],
   "init": true
@@ -4153,7 +4141,7 @@
    },
    {
     "date": "2026-11-23",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    },
@@ -4172,7 +4160,8 @@
     "time": "10:30",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    },
    {
@@ -4181,14 +4170,17 @@
     "text": "投資活動",
     "time": "10:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
   "init": true,
   "mats": [
    "https://mopsov.twse.com.tw/nas/STR/622320261113M001.pdf",
-   "https://mopsov.twse.com.tw/nas/STR/622320261113E001.pdf"
+   "https://mopsov.twse.com.tw/nas/STR/622320261113E001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/622320261120M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/622320261120E001.pdf"
   ]
  },
  "7769": {
@@ -4866,7 +4858,8 @@
     "text": "投資活動",
     "time": "09:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    },
    {
@@ -5213,7 +5206,8 @@
     "time": "09:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -5321,7 +5315,8 @@
     "time": "13:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -5580,7 +5575,8 @@
     "time": "09:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    }
   ],
@@ -5969,7 +5965,8 @@
     "time": "10:00",
     "done": [
      "d3",
-     "d1"
+     "d1",
+     "d0"
     ]
    },
    {
@@ -6640,7 +6637,8 @@
     "text": "投資活動",
     "time": "14:00",
     "done": [
-     "d3"
+     "d3",
+     "d1"
     ]
    }
   ],
