@@ -3332,7 +3332,8 @@
    "115/11/09|16:34:44|公告本公司115年第3季合併財務報告經董事會決議通過",
    "115/11/10|13:44:45|公告本公司將受邀參加「SinoPac CLST TW Acc",
    "115/11/13|13:42:01|公告本公司將受邀參加「J.P. Morgan APAC Te",
-   "115/11/17|13:40:45|公告本公司將受邀參加「Morgan Stanley Annu"
+   "115/11/17|13:40:45|公告本公司將受邀參加「Morgan Stanley Annu",
+   "115/11/23|13:43:00|公告本公司將受邀參加「Citi Taiwan Corpora"
   ],
   "rev": [
    "11508",
@@ -3364,9 +3365,25 @@
     "mat": false,
     "late": true,
     "text": "投資活動"
+   },
+   {
+    "date": "2026-11-24",
+    "mat": false,
+    "late": false,
+    "text": "投資活動"
    }
   ],
-  "reminders": [],
+  "reminders": [
+   {
+    "date": "2026-11-24",
+    "kind": "meeting",
+    "text": "投資活動",
+    "time": "09:00",
+    "done": [
+     "d1"
+    ]
+   }
+  ],
   "init": true
  },
  "3131": {
