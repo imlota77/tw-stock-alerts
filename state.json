@@ -2958,7 +2958,7 @@
   "meetings": [
    {
     "date": "2026-11-24",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "法說會"
    }
@@ -2977,7 +2977,11 @@
     ]
    }
   ],
-  "init": true
+  "init": true,
+  "mats": [
+   "https://mopsov.twse.com.tw/nas/STR/288620261124M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/288620261124E001.pdf"
+  ]
  },
  "2887": {
   "seen": [
