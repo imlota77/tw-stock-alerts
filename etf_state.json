@@ -1870,7 +1870,7 @@
   }
  },
  "00990A": {
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "hold": {
    "MSFT US": [
     "MICROSOFT CORP",
@@ -1888,65 +1888,65 @@
     "META PLATFORMS INC-CLASS A",
     64600
    ],
-   "AAPL US": [
-    "APPLE INC",
-    93320
-   ],
    "2330": [
     "台積電",
     518000
    ],
-   "BE US": [
-    "BLOOM ENERGY CORP- A",
-    157053
+   "AAPL US": [
+    "APPLE INC",
+    93320
    ],
    "LLY US": [
     "ELI LILLY & CO",
     19380
    ],
-   "GE US": [
-    "GENERAL ELECTRIC",
-    75800
+   "BE US": [
+    "BLOOM ENERGY CORP- A",
+    157053
    ],
    "CRWD US": [
     "CROWDSTRIKE HOLDINGS INC - A",
     115363
    ],
-   "PANW US": [
-    "PALO ALTO NETWORKS INC",
-    67000
+   "GE US": [
+    "GENERAL ELECTRIC",
+    75800
    ],
    "APP US": [
     "APPLOVIN CORP-CLASS A",
     62440
    ],
-   "NET US": [
-    "CLOUDFLARE INC - CLASS A",
-    79260
+   "2454": [
+    "聯發科",
+    193000
+   ],
+   "PANW US": [
+    "PALO ALTO NETWORKS INC",
+    67000
    ],
    "SNOW US": [
     "SNOWFLAKE INC",
     84880
    ],
-   "ANET US": [
-    "ARISTA NETWORKS INC",
-    125800
-   ],
-   "2454": [
-    "聯發科",
-    193000
+   "NET US": [
+    "CLOUDFLARE INC - CLASS A",
+    79260
    ],
    "PLTR US": [
     "PALANTIR TECHNOLOGIES INC-A",
     132642
    ],
-   "AVGO US": [
-    "BROADCOM INC",
-    60760
+   "ANET US": [
+    "ARISTA NETWORKS INC",
+    125800
    ],
    "SHOP US": [
     "SHOPIFY INC - CLASS A",
     141600
+   ],
+   "AVGO US": [
+    "BROADCOM INC",
+    60760
    ],
    "FROG US": [
     "JFROG LTD",
@@ -1956,25 +1956,33 @@
     "UNITY SOFTWARE INC",
     351600
    ],
-   "AMD US": [
-    "ADVANCED MICRO DEVICES",
-    33099
+   "3017": [
+    "奇鋐",
+    190000
    ],
    "HWM US": [
     "HOWMET AEROSPACE INC",
     65100
    ],
-   "3017": [
-    "奇鋐",
-    190000
+   "AMD US": [
+    "ADVANCED MICRO DEVICES",
+    33099
    ],
    "TTWO US": [
     "TAKE-TWO INTERACTIVE SOFTWRE",
     60200
    ],
+   "6857 JP": [
+    "ADVANTEST CORP",
+    68500
+   ],
    "6098 JP": [
     "RECRUIT HOLDINGS CO LTD",
     100200
+   ],
+   "MU US": [
+    "MICRON TECHNOLOGY INC",
+    16425
    ],
    "3443": [
     "創意",
@@ -1984,21 +1992,25 @@
     "台光電",
     83000
    ],
-   "MU US": [
-    "MICRON TECHNOLOGY INC",
-    10825
-   ],
    "3037": [
     "欣興",
     444000
    ],
+   "COHR US": [
+    "COHERENT CORP",
+    31240
+   ],
+   "4004 JP": [
+    "RESONAC HOLDINGS CORP",
+    78600
+   ],
+   "SMTC US": [
+    "SEMTECH CORP",
+    60900
+   ],
    "7974 JP": [
     "NINTENDO CO LTD",
     80400
-   ],
-   "9602 JP": [
-    "TOHO CO LTD",
-    304900
    ]
   }
  },
