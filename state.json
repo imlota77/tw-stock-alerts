@@ -1137,7 +1137,7 @@
   "meetings": [
    {
     "date": "2026-11-27",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "法說會"
    },
@@ -1169,7 +1169,8 @@
     "done": [
      "d3",
      "d1",
-     "d0"
+     "d0",
+     "soon"
     ]
    }
   ],
@@ -1178,7 +1179,9 @@
    "https://mopsov.twse.com.tw/nas/STR/288220261109M001.pdf",
    "https://mopsov.twse.com.tw/nas/STR/288220261109E001.pdf",
    "https://mopsov.twse.com.tw/nas/STR/288220261117M001.pdf",
-   "https://mopsov.twse.com.tw/nas/STR/288220261117E001.pdf"
+   "https://mopsov.twse.com.tw/nas/STR/288220261117E001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/288220261127M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/288220261127E001.pdf"
   ]
  },
  "2881": {
@@ -2000,7 +2003,8 @@
     "time": "15:00",
     "done": [
      "d1",
-     "d0"
+     "d0",
+     "soon"
     ]
    }
   ],
@@ -3100,7 +3104,8 @@
     "done": [
      "d3",
      "d1",
-     "d0"
+     "d0",
+     "soon"
     ]
    }
   ],
@@ -3516,7 +3521,8 @@
     "time": "14:30",
     "done": [
      "d1",
-     "d0"
+     "d0",
+     "soon"
     ]
    }
   ],
@@ -3676,7 +3682,8 @@
     "done": [
      "d3",
      "d1",
-     "d0"
+     "d0",
+     "soon"
     ]
    },
    {
@@ -5344,7 +5351,8 @@
     "done": [
      "d3",
      "d1",
-     "d0"
+     "d0",
+     "soon"
     ]
    },
    {
@@ -5653,7 +5661,8 @@
     "time": "14:30",
     "done": [
      "d1",
-     "d0"
+     "d0",
+     "soon"
     ]
    }
   ],
