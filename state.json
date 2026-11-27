@@ -5638,7 +5638,7 @@
   "meetings": [
    {
     "date": "2026-11-27",
-    "mat": false,
+    "mat": true,
     "late": false,
     "text": "投資活動"
    }
@@ -5655,7 +5655,11 @@
     ]
    }
   ],
-  "init": true
+  "init": true,
+  "mats": [
+   "https://mopsov.twse.com.tw/nas/STR/358320261127M001.pdf",
+   "https://mopsov.twse.com.tw/nas/STR/358320261127E001.pdf"
+  ]
  },
  "2467": {
   "seen": [
